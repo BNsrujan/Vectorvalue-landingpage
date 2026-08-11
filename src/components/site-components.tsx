@@ -123,7 +123,7 @@ export function CTABand({ tone = "ink", title = "Have an engineering requirement
       <Container>
         <div style={{ display: "grid", gridTemplateColumns: "var(--split)", gap: "var(--space-12)", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
-            <Eyebrow tone={dark ? "inverse" : "accent"}>Start a conversation</Eyebrow>
+            {/* <Eyebrow tone={dark ? "inverse" : "accent"}>Start a conversation</Eyebrow> */}
             <h2 style={{ font: "var(--type-h1)", letterSpacing: "var(--tracking-heading)", color: dark ? "var(--text-inverse)" : "var(--text-primary)", maxWidth: "18ch" }}>{title}</h2>
             <p style={{ font: "var(--type-body-lg)", color: dark ? "var(--text-inverse-secondary)" : "var(--text-secondary)", maxWidth: "var(--measure-body)" }}>{body}</p>
           </div>
