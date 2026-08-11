@@ -1,0 +1,82 @@
+<!-- @dsCard group="Colors" viewport="700x200" name="Semantic pairs" subtitle="Text, surface and border tokens — reach for these, not raw ramp values" -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px 24px;
+            background: var(--surface-page);
+            font-family: var(--font-core)
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 11px
+        }
+
+        td {
+            padding: 7px 10px;
+            border-bottom: 1px solid var(--border-hairline);
+            vertical-align: middle
+        }
+
+        .sw {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--border-hairline);
+            display: inline-block;
+            vertical-align: middle
+        }
+
+        .t {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: .04em;
+            color: var(--text-secondary)
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td><span class="sw" style="background:var(--text-primary)"></span></td>
+            <td class="t">--text-primary</td>
+            <td><span class="sw" style="background:var(--text-secondary)"></span></td>
+            <td class="t">--text-secondary</td>
+            <td><span class="sw" style="background:var(--text-muted)"></span></td>
+            <td class="t">--text-muted</td>
+        </tr>
+        <tr>
+            <td><span class="sw" style="background:var(--surface-page)"></span></td>
+            <td class="t">--surface-page</td>
+            <td><span class="sw" style="background:var(--surface-subtle)"></span></td>
+            <td class="t">--surface-subtle</td>
+            <td><span class="sw" style="background:var(--surface-dark)"></span></td>
+            <td class="t">--surface-dark</td>
+        </tr>
+        <tr>
+            <td><span class="sw" style="background:var(--border-hairline)"></span></td>
+            <td class="t">--border-hairline</td>
+            <td><span class="sw" style="background:var(--border-default)"></span></td>
+            <td class="t">--border-default</td>
+            <td><span class="sw" style="background:var(--border-accent)"></span></td>
+            <td class="t">--border-accent</td>
+        </tr>
+        <tr>
+            <td><span class="sw" style="background:var(--status-success)"></span></td>
+            <td class="t">--status-success</td>
+            <td><span class="sw" style="background:var(--status-warning)"></span></td>
+            <td class="t">--status-warning</td>
+            <td><span class="sw" style="background:var(--status-error)"></span></td>
+            <td class="t">--status-error</td>
+        </tr>
+    </table>
+</body>
+
+</html>

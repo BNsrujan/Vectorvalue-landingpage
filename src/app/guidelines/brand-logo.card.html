@@ -1,0 +1,65 @@
+<!-- @dsCard group="Brand" viewport="700x180" name="Logo lockups" subtitle="Supplied mark, wordmark set in Manrope ExtraBold at -0.03em" -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px 24px;
+            background: var(--surface-page);
+            font-family: var(--font-core)
+        }
+
+        .r {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px
+        }
+
+        .b {
+            height: 104px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            border: 1px solid var(--border-hairline)
+        }
+
+        .w {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -.03em
+        }
+
+        .l {
+            display: block;
+            margin-top: 8px;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: var(--text-muted)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="r">
+        <div>
+            <div class="b"><img src="../assets/logo/vectorvalue-mark.png" alt="VectorValue" style="height:46px"></div>
+            <span class="l">mark only</span>
+        </div>
+        <div>
+            <div class="b"><img src="../assets/logo/vectorvalue-mark.png" alt="" style="height:34px"><span class="w"
+                    style="color:var(--ink-800)">VectorValue</span></div><span class="l">primary lockup</span>
+        </div>
+        <div>
+            <div class="b" style="background:var(--ink-900)"><img src="../assets/logo/vectorvalue-mark.png" alt=""
+                    style="height:34px;filter:brightness(0) invert(1)"><span class="w"
+                    style="color:#fff">VectorValue</span></div><span class="l">on ink · knockout</span>
+        </div>
+    </div>
+</body>
+
+</html> 

@@ -1,0 +1,71 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Brand core" subtitle="The five supplied brand values — nothing outside this set is a brand colour" -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px 24px;
+            background: var(--surface-page);
+            font-family: var(--font-core)
+        }
+
+        .r {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px
+        }
+
+        .s {
+            height: 74px;
+            border: 1px solid var(--border-hairline)
+        }
+
+        .n {
+            display: block;
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: -.01em;
+            color: var(--text-primary)
+        }
+
+        .h {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: .06em;
+            color: var(--text-muted)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="r">
+        <div>
+            <div class="s" style="background:var(--vv-orange)"></div><span class="n">Primary Orange</span><span
+                class="h">#EB5C20 · --vv-orange</span>
+        </div>
+        <div>
+            <div class="s" style="background:var(--vv-ink)"></div><span class="n">Primary Dark</span><span
+                class="h">#212531 · --vv-ink</span>
+        </div>
+        <div>
+            <div class="s" style="background:var(--vv-slate)"></div><span class="n">Slate</span><span class="h">#4F5E75
+                · --vv-slate</span>
+        </div>
+        <div>
+            <div class="s" style="background:var(--vv-mist)"></div><span class="n">Neutral</span><span class="h">#D6D8D7
+                · --vv-mist</span>
+        </div>
+        <div>
+            <div class="s" style="background:var(--vv-paper)"></div><span class="n">Light Background</span><span
+                class="h">#F5F5F5 · --vv-paper</span>
+        </div>
+    </div>
+</body>
+
+</html>

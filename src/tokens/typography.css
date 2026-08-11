@@ -1,0 +1,39 @@
+/* VectorValue typography — one core sans (Manrope), one technical mono (IBM Plex Mono) */
+:root{
+--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;--weight-black:800;
+
+/* Fluid display + heading scale (min → max) */
+--text-display-1:clamp(2.75rem,5.4vw,5.25rem);
+--text-display-2:clamp(2.25rem,4vw,3.75rem);
+--text-h1:clamp(2rem,3.4vw,3.25rem);
+--text-h2:clamp(1.625rem,2.5vw,2.5rem);
+--text-h3:clamp(1.25rem,1.5vw,1.5rem);
+--text-h4:1.125rem;
+
+/* Fixed body + utility scale */
+--text-body-xl:1.25rem;--text-body-lg:1.125rem;--text-body:1rem;--text-body-sm:0.9375rem;--text-caption:0.8125rem;--text-label:0.75rem;--text-micro:0.6875rem;
+
+/* Line height */
+--leading-display:1.02;--leading-heading:1.14;--leading-snug:1.32;--leading-body:1.6;--leading-relaxed:1.72;
+
+/* Letter spacing — tight on display, wide on uppercase labels */
+--tracking-display:-0.035em;--tracking-heading:-0.022em;--tracking-title:-0.012em;--tracking-body:0em;--tracking-label:0.14em;--tracking-mono:0.02em;
+
+/* Composed roles */
+--type-display-1:var(--weight-bold) var(--text-display-1)/var(--leading-display) var(--font-core);
+--type-display-2:var(--weight-bold) var(--text-display-2)/var(--leading-display) var(--font-core);
+--type-h1:var(--weight-bold) var(--text-h1)/var(--leading-heading) var(--font-core);
+--type-h2:var(--weight-semibold) var(--text-h2)/var(--leading-heading) var(--font-core);
+--type-h3:var(--weight-semibold) var(--text-h3)/var(--leading-snug) var(--font-core);
+--type-h4:var(--weight-semibold) var(--text-h4)/var(--leading-snug) var(--font-core);
+--type-body-lg:var(--weight-regular) var(--text-body-lg)/var(--leading-relaxed) var(--font-core);
+--type-body:var(--weight-regular) var(--text-body)/var(--leading-body) var(--font-core);
+--type-body-sm:var(--weight-regular) var(--text-body-sm)/var(--leading-body) var(--font-core);
+--type-label:var(--weight-semibold) var(--text-label)/1.2 var(--font-mono);
+--type-mono:var(--weight-regular) var(--text-caption)/1.4 var(--font-mono);
+
+/* Measure */
+--measure-tight:44ch; /* @kind other */
+--measure-body:62ch; /* @kind other */
+--measure-wide:76ch /* @kind other */
+}

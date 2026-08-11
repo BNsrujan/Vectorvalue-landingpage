@@ -1,0 +1,32 @@
+/* VectorValue colour system — 60 light / 30 dark / 10 orange */
+:root{
+/* --- Brand core (exact, supplied) --- */
+--vv-orange:#EB5C20;--vv-paper:#F5F5F5;--vv-mist:#D6D8D7;--vv-slate:#4F5E75;--vv-ink:#212531;
+
+/* --- Ink ramp: structural darks --- */
+--ink-950:#0F1219;--ink-900:#171B25;--ink-800:#212531;--ink-700:#2B3040;--ink-600:#373D4F;
+
+/* --- Slate ramp: secondary / body --- */
+--slate-700:#3E4A5D;--slate-600:#4F5E75;--slate-500:#63718A;--slate-400:#8290A4;--slate-300:#A6B1C0;--slate-200:#C7CED8;--slate-100:#E5E9EE;
+
+/* --- Neutral ramp: surfaces & rules --- */
+--neutral-000:#FFFFFF;--neutral-050:#FAFAFA;--neutral-100:#F5F5F5;--neutral-200:#ECEDEC;--neutral-250:#E4E6E5;--neutral-300:#D6D8D7;--neutral-400:#BCBFBE;--neutral-500:#9AA09E;
+
+/* --- Orange ramp: the 10% --- */
+--orange-050:#FDF1EB;--orange-100:#FBDCCE;--orange-200:#F6BC9F;--orange-400:#F07C4A;--orange-600:#EB5C20;--orange-700:#D24E16;--orange-800:#B03F0F;
+
+/* --- Status (forms + system feedback only) --- */
+--status-success:#2E7D5B;--status-success-soft:#E8F3ED;--status-warning:#B87A12;--status-warning-soft:#FBF1DE;--status-error:#C0392B;--status-error-soft:#FBECEA;--status-info:var(--slate-600);--status-info-soft:#EDF1F6;
+
+/* --- Semantic: surfaces --- */
+--surface-page:var(--neutral-000);--surface-subtle:var(--neutral-100);--surface-sunken:var(--neutral-200);--surface-raised:var(--neutral-000);--surface-dark:var(--ink-800);--surface-dark-deep:var(--ink-950);--surface-slate:var(--slate-600);--surface-accent:var(--orange-600);--surface-accent-soft:var(--orange-050);--surface-overlay:rgba(15,18,25,.62);
+
+/* --- Semantic: text --- */
+--text-primary:var(--ink-800);--text-secondary:var(--slate-600);--text-muted:var(--slate-400);--text-inverse:var(--neutral-000);--text-inverse-secondary:rgba(255,255,255,.72);--text-inverse-muted:rgba(255,255,255,.52);--text-accent:var(--orange-600);--text-on-accent:var(--neutral-000);--text-link:var(--orange-700);--text-link-hover:var(--orange-800);
+
+/* --- Semantic: borders --- */
+--border-hairline:var(--neutral-250);--border-default:var(--neutral-300);--border-strong:var(--slate-300);--border-ink:var(--ink-800);--border-accent:var(--orange-600);--border-on-dark:rgba(255,255,255,.14);--border-on-dark-strong:rgba(255,255,255,.26);
+
+/* --- Semantic: interaction --- */
+--focus-ring:var(--orange-600);--selection-bg:var(--orange-100);--selection-fg:var(--ink-800)
+}

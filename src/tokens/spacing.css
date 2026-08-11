@@ -1,0 +1,15 @@
+/* VectorValue spacing — 4px base grid */
+:root{
+--space-0:0;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-7:28px;--space-8:32px;--space-10:40px;--space-12:48px;--space-14:56px;--space-16:64px;--space-20:80px;--space-24:96px;--space-28:112px;--space-32:128px;--space-40:160px;
+
+/* Layout */
+--container-max:1320px;--container-narrow:880px;--container-gutter:clamp(20px,4vw,64px); /* @kind spacing */
+--section-y:clamp(64px,8vw,128px); /* @kind spacing */
+--section-y-tight:clamp(48px,5vw,80px); /* @kind spacing */
+--grid-columns:12; /* @kind other */--grid-gap:clamp(16px,2vw,32px);
+
+/* Component rhythm */
+--control-height-sm:36px;--control-height:48px;--control-height-lg:56px;
+--control-pad-x:24px;--control-pad-x-lg:32px;
+--card-pad:clamp(24px,2.4vw,40px);--card-gap:1px
+}

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VectorValue Guidelines</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 32px;
+      background: var(--surface-page);
+      font-family: var(--font-core);
+      color: var(--text-default);
+    }
+
+    .page-header {
+      max-width: 1080px;
+      margin: 0 auto 32px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .page-header p {
+      margin: 16px 0 0;
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 760px;
+    }
+
+    .guideline-list {
+      display: grid;
+      gap: 28px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .guideline-card {
+      border: 1px solid var(--border-default);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--surface-card);
+      box-shadow: var(--shadow-card);
+    }
+
+    .guideline-card__header {
+      padding: 20px 24px;
+      background: var(--surface-page);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .guideline-card__header h2 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .guideline-card__header a {
+      color: var(--text-link);
+      font-size: 0.96rem;
+      text-decoration: none;
+    }
+
+    .guideline-card__iframe {
+      width: 100%;
+      min-height: 320px;
+      border: 0;
+      background: white;
+    }
+
+    .guide-meta {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <main class="page-header">
+    <h1>Guidelines overview</h1>
+    <p>All guideline cards live together on one page. Each section loads the card preview from its own HTML file so the original markup remains unchanged.</p>
+  </main>
+
+  <section class="guideline-list" id="guidelines"></section>
+
+  <script>
+    const guidelines = [
+      { file: "brand-imagery.card.html", title: "Brand imagery" },
+      { file: "brand-logo.card.html", title: "Brand logo" },
+      { file: "brand-patterns.card.html", title: "Brand patterns" },
+      { file: "colors-accent.card.html", title: "Colors accent" },
+      { file: "colors-balance.card.html", title: "Colors balance" },
+      { file: "colors-brand.card.html", title: "Colors brand" },
+      { file: "colors-ink.card.html", title: "Colors ink" },
+      { file: "colors-neutral.card.html", title: "Colors neutral" },
+      { file: "colors-semantic.card.html", title: "Colors semantic" },
+      { file: "motion.card.html", title: "Motion" },
+      { file: "spacing-layout.card.html", title: "Spacing layout" },
+      { file: "spacing-scale.card.html", title: "Spacing scale" },
+      { file: "surfaces-elevation.card.html", title: "Surfaces elevation" },
+      { file: "surfaces-radii.card.html", title: "Surfaces radii" },
+      { file: "type-body.card.html", title: "Type body" },
+      { file: "type-display.card.html", title: "Type display" },
+      { file: "type-headings.card.html", title: "Type headings" },
+      { file: "type-mono.card.html", title: "Type mono" }
+    ];
+
+    const container = document.getElementById("guidelines");
+
+    function createCard(item) {
+      const card = document.createElement("article");
+      card.className = "guideline-card";
+
+      const header = document.createElement("div");
+      header.className = "guideline-card__header";
+      header.innerHTML = `
+        <div>
+          <h2>${item.title}</h2>
+          <div class="guide-meta">${item.file}</div>
+        </div>
+        <a href="${item.file}" target="_blank" rel="noreferrer">Open source</a>
+      `;
+
+      const iframe = document.createElement("iframe");
+      iframe.className = "guideline-card__iframe";
+      iframe.src = item.file;
+      iframe.loading = "lazy";
+      iframe.title = item.title;
+      iframe.addEventListener("load", () => {
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          const body = doc.body;
+          if (body) {
+            iframe.style.height = Math.max(body.scrollHeight, body.offsetHeight, 360) + "px";
+          }
+        } catch (error) {
+          iframe.style.height = "420px";
+        }
+      });
+
+      card.appendChild(header);
+      card.appendChild(iframe);
+      return card;
+    }
+
+    guidelines.forEach(item => container.appendChild(createCard(item)));
+  </script>
+</body>
+</html>

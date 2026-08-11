@@ -117,6 +117,16 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@import url("src/app/tokens/fonts.css");
+@import url("src/app/tokens/colors.css");
+@import url("src/app/tokens/typography.css");
+@import url("src/app/tokens/spacing.css");
+@import url("src/app/tokens/surfaces.css");
+@import url("src/app/tokens/motion.css");
+@import url("src/app/tokens/patterns.css");
+@import url("src/app/tokens/responsive.css");
+@import url("src/app/tokens/base.css");
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -128,3 +138,21 @@
     @apply font-sans;
   }
 }
+
+.f img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.05)
+}
+
+.f {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--neutral-300);
+    position: relative
+}
+
+
+
+
