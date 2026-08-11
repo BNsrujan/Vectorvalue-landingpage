@@ -1,3 +1,9 @@
+# Google Calendar booking
+
+The `/book-a-call` page uses the server-side Google Calendar handlers at `/api/calendar/availability` and `/api/calendar/book`. Copy `.env.example` to `.env.local`, add an OAuth client ID, client secret, and refresh token, then restart the development server.
+
+The Google OAuth client needs Calendar access. `OWNER_TIMEZONE` controls the working timezone, `CALL_DURATION_MINUTES` controls slot length, `CALL_SLOT_PADDING_MINUTES` buffers existing events, and `OWNER_AVAILABILITY_JSON` defines weekly working windows using Sunday `0` through Saturday `6`.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

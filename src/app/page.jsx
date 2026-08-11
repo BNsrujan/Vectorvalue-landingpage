@@ -22,8 +22,8 @@ function Hero() {
     <ScrollVideo src="/assets/video/hero-aerial-drone.mp4" track={280} height="100vh" className="-mt-[76px]" scrim="linear-gradient(180deg, rgba(15,18,25,.22) 0%, rgba(15,18,25,.72) 100%)">
       {(p) => (
         <div className="flex h-full flex-col justify-between pt-[76px]">
-          <Container className="flex flex-1 items-center">
-            <div className="flex max-w-[880px] flex-col gap-[var(--space-7)] p-[clamp(24px,3vw,44px)]">
+          <Container className="flex flex-1 items-center ">
+            <div className="flex max-w-[1280px] m-48 flex-col gap-[var(--space-7)] p-[clamp(24px,3vw,44px)]">
               <Eyebrow tone="inverse">Engineering · Estimation · Design</Eyebrow>
               <h1 className="[font:var(--type-display-1)] !text-white">
                 Engineering Precision.<br />
@@ -55,13 +55,13 @@ function Hero() {
 
 function IntroStatement() {
   return (
-    <div className="[background:var(--ink-950)] [background-image:var(--pattern-blueprint-dark)] [background-size:var(--grid-size-lg)_var(--grid-size-lg)]">
+    <div className="relative py-[450px]  [background:var(--ink-950)] [background-image:var(--pattern-blueprint-dark)] [background-size:var(--grid-size-lg)_var(--grid-size-lg)]">
       <Container>
         <div className="grid items-start gap-[var(--space-16)] [grid-template-columns:var(--split)]">
-          <TextReveal tone="dark" track={150} accentWords={["before", "execution"]}>
+          <TextReveal tone="dark"  track={150} accentWords={["before", "execution"]} className="-py-[450px]">
             Engineering value is decided before execution — in the quantities, the calculations and the assumptions behind them.
           </TextReveal>
-          <div className="sticky top-[34vh] flex flex-col gap-[var(--space-8)] pb-[var(--space-20)] md:py-[324px]">
+          <div className="sticky top-[34vh]   flex flex-col gap-[var(--space-8)] pb-[var(--space-20)]">
             <p className="reveal-text [font:var(--type-body-lg)] text-text-inverse-secondary">
               We work in the window where a project is still a decision: comparing options, measuring scope and documenting the reasoning — so the numbers your team commits to are the numbers the project can hold.
             </p>
@@ -107,10 +107,9 @@ function ExpertiseGrid() {
 function GlobalReach() {
   return (
     <Section tone="deep" grid className="relative overflow-hidden">
-      <div className="absolute z-1 w-full h-full bg-black/20"></div>
       <Container>
-        <div className="grid items-center gap-[var(--space-12)] [grid-template-columns:var(--split-rev)]">
-          <div className="flex flex-col gap-[var(--space-6)] z-3">
+        <div className="grid items-center gap-[var(--space-12)] [grid-template-columns:var(--split-rev)] ">
+          <div className="flex flex-col gap-[var(--space-6)] z-3 bg-neutral-700  p-4">
             <Eyebrow index="05" tone="inverse">Global Reach</Eyebrow>
             <h2 className="[font:var(--type-h1)] [letter-spacing:var(--tracking-heading)]  !text-white">Global engineering<br />without borders.</h2>
             <p className="max-w-[44ch] [font:var(--type-body-lg)] text-text-inverse-secondary">
@@ -120,7 +119,7 @@ function GlobalReach() {
           </div>
           <ScrollReveal from="right" >
              
-            <DottedWorldMap markers={TARGET_MARKETS} connections={MARKET_LINKS} tone="dark" height={560} scale={3.2}  className="aspect-[16/10]" />
+            <DottedWorldMap markers={TARGET_MARKETS} connections={MARKET_LINKS} tone="dark" height={660} scale={3.2} />
           </ScrollReveal>
         </div>
       </Container>

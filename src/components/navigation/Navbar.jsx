@@ -114,6 +114,15 @@ export function Navbar({
                       <a href={g.href} onClick={(e) => go(e, g.href)} style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", fontFamily: "var(--font-core)", fontSize: "var(--text-body-sm)", color: "var(--text-secondary)" }}>
                         <span style={{ color: "var(--text-accent)", display: "flex" }}><Icon name={g.icon || "layers"} size={16} /></span>{g.title}
                       </a>
+                      {g.items && g.items.length ? (
+                        <ul style={{ listStyle: "none", margin: "8px 0 0 26px", padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
+                          {g.items.map((item) => (
+                            <li key={item.label}>
+                              <a href={item.href || g.href} onClick={(e) => go(e, item.href || g.href)} style={{ display: "block", textDecoration: "none", fontFamily: "var(--font-core)", fontSize: "var(--text-caption)", color: "var(--text-muted)" }}>{item.label}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
                     </li>
                   ))}
                 </ul>
