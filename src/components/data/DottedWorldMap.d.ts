@@ -23,6 +23,7 @@ export interface DottedWorldMapProps {
   dotRadius?: number;
   pulse?: boolean;
   height?: number | string;
+  scale?: number;
   style?: React.CSSProperties;
 }
 export declare function DottedWorldMap(props: DottedWorldMapProps): JSX.Element;

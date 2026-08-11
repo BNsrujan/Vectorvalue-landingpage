@@ -38,7 +38,7 @@ function inside(lng, lat, poly) {
    Markers are configuration, not claims — pass only approved target markets. */
 export function DottedWorldMap({
   markers = [], connections = [], tone = "dark", step = 5.6, dotRadius = 1.25,
-  pulse = true, height = 520, style, ...rest
+  pulse = true, height = 520, scale = 2, style, ...rest
 }) {
   const dots = React.useMemo(() => {
     const out = [];
@@ -58,6 +58,11 @@ export function DottedWorldMap({
   const dotFill = inverse ? "rgba(255,255,255,0.16)" : "rgba(79,94,117,0.26)";
   const pts = markers.map((m) => project(m.lng, m.lat));
   const uid = React.useId ? React.useId().replace(/:/g, "") : "vvmap";
+  const safeScale = Math.max(1, Number(scale) || 1);
+  const viewWidth = VB_W / safeScale;
+  const viewHeight = VB_H / safeScale;
+  const viewX = (VB_W - viewWidth) / 2;
+  const viewY = (VB_H - viewHeight) / 2;
 
   return (
     <div style={{ position: "relative", width: "100%", height, ...style }} {...rest}>
@@ -66,7 +71,7 @@ export function DottedWorldMap({
         "@keyframes vvdash-" + uid + "{to{stroke-dashoffset:-24}}" +
         "@media (prefers-reduced-motion:reduce){." + uid + "-p{animation:none!important;opacity:0!important}." + uid + "-l{animation:none!important}}"
       }} />
-      <svg viewBox={"0 0 " + VB_W + " " + VB_H} preserveAspectRatio="xMidYMid meet" style={{ width: "100%", height: "100%", overflow: "visible" }} role="img" aria-label="World map showing VectorValue target engineering markets">
+      <svg viewBox={`${viewX} ${viewY} ${viewWidth} ${viewHeight}`} preserveAspectRatio="xMidYMid meet" style={{ width: "100%", height: "100%", overflow: "visible" }} role="img" aria-label="World map showing VectorValue target engineering markets">
         <g>{dots.map((d, i) => <circle key={i} cx={d[0]} cy={d[1]} r={dotRadius} fill={dotFill} />)}</g>
         {connections.map(([a, b], i) => {
           const p1 = pts[a], p2 = pts[b];

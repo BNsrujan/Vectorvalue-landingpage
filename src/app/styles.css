@@ -1,0 +1,14 @@
+@import "../tokens/fonts.css";
+@import "../tokens/colors.css";
+@import "../tokens/typography.css";
+@import "../tokens/spacing.css";
+@import "../tokens/surfaces.css";
+@import "../tokens/motion.css";
+@import "../tokens/patterns.css";
+@import "../tokens/responsive.css";
+@import "../tokens/base.css";
+
+:root {
+  --text-default: var(--text-primary);
+  --surface-card: var(--surface-raised);
+}

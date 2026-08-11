@@ -1,7 +1,7 @@
 export const companyConfig = {
   name: "VectorValue",
-  email: "YOUR_EMAIL",
-  phone: "YOUR_PHONE",
+  email: "contact@vectorvalue.com",
+  phone: "+91 123 456 7890",
   linkedin: "YOUR_LINKEDIN",
   linkedinUrl: "#",
   schedulingProvider: "calendly",

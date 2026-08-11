@@ -25,7 +25,7 @@ function Hero() {
           <Container className="flex flex-1 items-center">
             <div className="flex max-w-[880px] flex-col gap-[var(--space-7)] p-[clamp(24px,3vw,44px)]">
               <Eyebrow tone="inverse">Engineering · Estimation · Design</Eyebrow>
-              <h1 className="[font:var(--type-display-1)]    !text-white">
+              <h1 className="[font:var(--type-display-1)] !text-white">
                 Engineering Precision.<br />
                 <span className="text-orange-600">Measured</span> Value.
               </h1>
@@ -106,10 +106,11 @@ function ExpertiseGrid() {
 
 function GlobalReach() {
   return (
-    <Section tone="deep" grid>
+    <Section tone="deep" grid className="relative overflow-hidden">
+      <div className="absolute z-1 w-full h-full bg-black/20"></div>
       <Container>
         <div className="grid items-center gap-[var(--space-12)] [grid-template-columns:var(--split-rev)]">
-          <div className="flex flex-col gap-[var(--space-6)]">
+          <div className="flex flex-col gap-[var(--space-6)] z-3">
             <Eyebrow index="05" tone="inverse">Global Reach</Eyebrow>
             <h2 className="[font:var(--type-h1)] [letter-spacing:var(--tracking-heading)]  !text-white">Global engineering<br />without borders.</h2>
             <p className="max-w-[44ch] [font:var(--type-body-lg)] text-text-inverse-secondary">
@@ -117,8 +118,9 @@ function GlobalReach() {
             </p>
             <Annotation tone="dark">Markers indicate target markets for remote engineering support — not offices or completed projects.</Annotation>
           </div>
-          <ScrollReveal from="right">
-            <DottedWorldMap markers={TARGET_MARKETS} connections={MARKET_LINKS} tone="dark" height={460} />
+          <ScrollReveal from="right" >
+             
+            <DottedWorldMap markers={TARGET_MARKETS} connections={MARKET_LINKS} tone="dark" height={560} scale={3.2}  className="aspect-[16/10]" />
           </ScrollReveal>
         </div>
       </Container>

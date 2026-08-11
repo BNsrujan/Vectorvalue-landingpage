@@ -6,17 +6,18 @@ export function ThumbnailPreview() {
   return (
     <div
       style={{
-        width: 1280,
-        height: 854,
+        width: "min(1280px, 100%)",
+        aspectRatio: "1280 / 854",
+        height: "auto",
         overflow: "hidden",
-        borderRadius: "32px",
+        borderRadius: "clamp(16px, 3vw, 32px)",
         boxShadow: "0 45px 120px rgba(15, 18, 25, 0.35)",
       }}
     >
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 300px",
+          gridTemplateColumns: "1fr clamp(72px, 23.4375%, 300px)",
           height: "100%",
         }}
       >
@@ -46,7 +47,8 @@ export function ThumbnailPreview() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: 36,
+              gap: "clamp(12px, 2.8vw, 36px)",
+              maxWidth: "calc(100% - 24px)",
             }}
           >
             <img
@@ -55,7 +57,8 @@ export function ThumbnailPreview() {
               width={250}
               height={250}
               style={{
-                width: 250,
+                width: "clamp(96px, 19.53125vw, 250px)",
+                height: "auto",
                 filter: "brightness(0) invert(1)",
                 display: "block",
               }}
@@ -64,11 +67,14 @@ export function ThumbnailPreview() {
               style={{
                 fontFamily: "var(--font-sans, Inter, ui-sans-serif, system-ui)",
                 fontWeight: 800,
-                fontSize: 96,
+                fontSize: "clamp(2.25rem, 7.5vw, 6rem)",
                 letterSpacing: "-0.045em",
                 color: "#fff",
                 lineHeight: 1,
                 whiteSpace: "nowrap",
+                maxWidth: "100%",
+                overflow: "hidden",
+                textOverflow: "clip",
               }}
             >
               VectorValue
