@@ -127,7 +127,17 @@ export const navItems = [
 ];
 
 export const megaGroups = [
-  { title: "Civil Engineering", href: "/core-expertise/civil-engineering", icon: "ruler", items: [] },
+  {
+    title: "Civil Engineering",
+    href: "/core-expertise/civil-engineering",
+    icon: "ruler",
+    items: [
+      { label: "Estimation", href: "/core-expertise/civil-engineering" },
+      { label: "Civil Work", href: "/core-expertise/civil-engineering" },
+      { label: "Design", href: "/core-expertise/civil-engineering" },
+      { label: "Foundation", href: "/core-expertise/civil-engineering" },
+    ],
+  },
   { title: "Structural Engineering", href: "/core-expertise/structural-engineering", icon: "frame", items: [] },
   { title: "Foundation Engineering", href: "/core-expertise/foundation-engineering", icon: "layers", items: [] },
 ];

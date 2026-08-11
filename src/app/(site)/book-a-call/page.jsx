@@ -18,6 +18,22 @@ const callTypes = [
   { value: "design", title: "Design discussion", body: "Structural, foundation or civil design options." },
 ];
 
+const weekdayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+function shiftMonth(monthKey, delta) {
+  const [year, month] = monthKey.split("-").map(Number);
+  const total = year * 12 + (month - 1) + delta;
+  const nextYear = Math.floor(total / 12);
+  const nextMonth = (total % 12) + 1;
+  return `${nextYear}-${String(nextMonth).padStart(2, "0")}`;
+}
+
+function formatMonthLabel(monthKey) {
+  if (!monthKey) return "";
+  const [year, month] = monthKey.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, 1)));
+}
+
 function BookingForm() {
   const [callType, setCallType] = React.useState("technical");
   const [availability, setAvailability] = React.useState(null);
@@ -27,8 +43,8 @@ function BookingForm() {
   const [status, setStatus] = React.useState("idle");
   const [error, setError] = React.useState("");
 
-  React.useEffect(() => {
-    fetch("/api/calendar/availability?days=14")
+  const fetchMonth = React.useCallback((month, selectFirstAvailable) => {
+    fetch(`/api/calendar/availability${month ? `?month=${month}` : ""}`)
       .then(async (response) => {
         const body = await response.json();
         if (!response.ok) throw new Error(body.error || "Availability is unavailable");
@@ -37,10 +53,13 @@ function BookingForm() {
       .then((body) => {
         setAvailability(body);
         setAvailabilityStatus("ready");
-        const firstDate = body.dates.find((date) => date.slots.length);
-        if (firstDate) {
-          setSelectedDate(firstDate.date);
-          setSelectedSlot(firstDate.slots[0]);
+        if (selectFirstAvailable) {
+          const firstDate = body.dates.find((date) => date.slots.length);
+          setSelectedDate(firstDate ? firstDate.date : "");
+          setSelectedSlot(firstDate ? firstDate.slots[0] : null);
+        } else {
+          setSelectedDate("");
+          setSelectedSlot(null);
         }
       })
       .catch((requestError) => {
@@ -48,6 +67,15 @@ function BookingForm() {
         setAvailabilityStatus("error");
       });
   }, []);
+
+  const loadMonth = (month, selectFirstAvailable) => {
+    setAvailabilityStatus("loading");
+    fetchMonth(month, selectFirstAvailable);
+  };
+
+  React.useEffect(() => {
+    fetchMonth(undefined, true);
+  }, [fetchMonth]);
 
   const submit = async (event) => {
     event.preventDefault();
@@ -144,14 +172,45 @@ function BookingForm() {
           {availabilityStatus === "loading" ? <Annotation>Checking calendar…</Annotation> : null}
         </div>
         {availabilityStatus === "error" ? <p className="mt-5 flex items-center gap-2 text-[var(--status-error)] [font:var(--type-body-sm)]"><Icon name="alert-circle" size={16} />Calendar availability is not configured yet.</p> : null}
-        {availabilityStatus === "ready" ? (
+        {availability ? (
           <>
-            <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+            <div className="mt-5 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => loadMonth(shiftMonth(availability.month, -1), false)}
+                disabled={availability.month === availability.currentMonthKey || availabilityStatus === "loading"}
+                aria-label="Previous month"
+                className="flex h-9 w-9 items-center justify-center border border-[var(--border-default)] transition-colors hover:border-[var(--ink-800)] disabled:cursor-not-allowed disabled:opacity-30"
+              >
+                <Icon name="chevron-left" size={16} />
+              </button>
+              <span className="[font:var(--type-h4)] [font-size:var(--text-body)]">{formatMonthLabel(availability.month)}</span>
+              <button
+                type="button"
+                onClick={() => loadMonth(shiftMonth(availability.month, 1), false)}
+                disabled={availability.month === availability.maxMonthKey || availabilityStatus === "loading"}
+                aria-label="Next month"
+                className="flex h-9 w-9 items-center justify-center border border-[var(--border-default)] transition-colors hover:border-[var(--ink-800)] disabled:cursor-not-allowed disabled:opacity-30"
+              >
+                <Icon name="chevron-right" size={16} />
+              </button>
+            </div>
+            <div className="mt-4 grid grid-cols-7 gap-1 text-center [font:var(--type-mono)] text-[10px] uppercase text-[var(--text-muted)]">
+              {weekdayLabels.map((day) => <span key={day}>{day}</span>)}
+            </div>
+            <div className="mt-2 grid grid-cols-7 gap-1">
+              {Array.from({ length: availability.dates[0]?.weekday || 0 }).map((_, index) => (
+                <span key={`pad-${index}`} />
+              ))}
               {availability.dates.map((date) => (
-                <button key={date.date} type="button" disabled={!date.slots.length} onClick={() => { setSelectedDate(date.date); setSelectedSlot(date.slots[0] || null); }} className={`min-h-20 border p-3 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${selectedDate === date.date ? "border-[var(--orange-600)] bg-[var(--orange-050)]" : "border-[var(--border-default)] hover:border-[var(--ink-800)]"}`}>
-                  <span className="block [font:var(--type-mono)] text-[10px] uppercase text-[var(--text-muted)]">{date.label.split(",")[0]}</span>
-                  <span className="mt-1 block [font:var(--type-h4)] [font-size:var(--text-body)]">{date.label.split(",").slice(1).join(",")}</span>
-                  <span className="mt-2 block text-[var(--orange-600)] [font:var(--type-mono)] text-[10px]">{date.slots.length ? `${date.slots.length} open` : "Full"}</span>
+                <button
+                  key={date.date}
+                  type="button"
+                  disabled={!date.slots.length}
+                  onClick={() => { setSelectedDate(date.date); setSelectedSlot(date.slots[0] || null); }}
+                  className={`aspect-square border p-1 [font:var(--type-body-sm)] transition-colors disabled:cursor-not-allowed disabled:opacity-30 ${selectedDate === date.date ? "border-[var(--orange-600)] bg-[var(--orange-050)]" : "border-[var(--border-default)] hover:border-[var(--ink-800)]"}`}
+                >
+                  {Number(date.date.slice(-2))}
                 </button>
               ))}
             </div>

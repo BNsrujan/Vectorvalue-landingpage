@@ -81,14 +81,17 @@ function dateKey(date: Date, timezone: string) {
   return `${value.year}-${value.month}-${value.day}`;
 }
 
-function addDays(date: Date, days: number) {
-  const result = new Date(date);
-  result.setUTCDate(result.getUTCDate() + days);
-  return result;
+function daysInMonth(monthKey: string) {
+  const [year, month] = monthKey.split("-").map(Number);
+  return new Date(Date.UTC(year, month, 0)).getUTCDate();
 }
 
-function localDateKey(date: Date, timezone: string, offset: number) {
-  return dateKey(addDays(date, offset), timezone);
+function addMonths(monthKey: string, delta: number) {
+  const [year, month] = monthKey.split("-").map(Number);
+  const total = year * 12 + (month - 1) + delta;
+  const nextYear = Math.floor(total / 12);
+  const nextMonth = (total % 12) + 1;
+  return `${nextYear}-${String(nextMonth).padStart(2, "0")}`;
 }
 
 function localWeekday(dateKeyValue: string, timezone: string) {
@@ -112,35 +115,52 @@ async function googleRequest(path: string, init: RequestInit = {}) {
   return body;
 }
 
-export async function getAvailability(days = 14) {
+export async function getAvailability(monthParam?: string) {
   const settings = config();
   const now = new Date();
-  const end = addDays(now, days);
+  const todayKey = dateKey(now, settings.timezone);
+  const currentMonthKey = todayKey.slice(0, 7);
+  const maxMonthKey = addMonths(currentMonthKey, 12);
+
+  let month = monthParam && /^\d{4}-\d{2}$/.test(monthParam) ? monthParam : currentMonthKey;
+  if (month < currentMonthKey) month = currentMonthKey;
+  if (month > maxMonthKey) month = maxMonthKey;
+
+  const total = daysInMonth(month);
+  const monthStart = localToUtc(`${month}-01T00:00`, settings.timezone);
+  const monthEnd = localToUtc(`${month}-${String(total).padStart(2, "0")}T23:59`, settings.timezone);
+
   const busyResponse = await googleRequest(`/freeBusy`, {
     method: "POST",
-    body: JSON.stringify({ timeMin: now.toISOString(), timeMax: end.toISOString(), timeZone: settings.timezone, items: [{ id: settings.calendarId }] }),
+    body: JSON.stringify({ timeMin: monthStart.toISOString(), timeMax: monthEnd.toISOString(), timeZone: settings.timezone, items: [{ id: settings.calendarId }] }),
   });
   const busy = (busyResponse.calendars?.[settings.calendarId]?.busy || []).map((item: { start: string; end: string }) => ({ start: new Date(item.start).getTime() - settings.padding * 60_000, end: new Date(item.end).getTime() + settings.padding * 60_000 }));
-  const dates: Array<{ date: string; label: string; slots: Slot[] }> = [];
-  for (let offset = 1; offset <= days; offset += 1) {
-    const key = localDateKey(now, settings.timezone, offset);
-    const windows = settings.availability[localWeekday(key, settings.timezone)] || [];
+
+  const dates: Array<{ date: string; weekday: number; slots: Slot[] }> = [];
+  for (let day = 1; day <= total; day += 1) {
+    const key = `${month}-${String(day).padStart(2, "0")}`;
+    const weekday = localWeekday(key, settings.timezone);
     const slots: Slot[] = [];
-    for (const window of windows) {
-      for (let minutes = window.start * 60; minutes + settings.duration <= window.end * 60; minutes += settings.duration) {
-        const hour = String(Math.floor(minutes / 60)).padStart(2, "0");
-        const minute = String(minutes % 60).padStart(2, "0");
-        const nextMinutes = minutes + settings.duration;
-        const endHour = String(Math.floor(nextMinutes / 60)).padStart(2, "0");
-        const endMinute = String(nextMinutes % 60).padStart(2, "0");
-        const start = localToUtc(`${key}T${hour}:${minute}`, settings.timezone);
-        const finish = localToUtc(`${key}T${endHour}:${endMinute}`, settings.timezone);
-        if (!busy.some((period: { start: number; end: number }) => start.getTime() < period.end && finish.getTime() > period.start)) slots.push({ start: start.toISOString(), end: finish.toISOString(), label: localLabel(start, settings.timezone) });
+    if (key >= todayKey) {
+      const windows = settings.availability[weekday] || [];
+      for (const window of windows) {
+        for (let minutes = window.start * 60; minutes + settings.duration <= window.end * 60; minutes += settings.duration) {
+          const hour = String(Math.floor(minutes / 60)).padStart(2, "0");
+          const minute = String(minutes % 60).padStart(2, "0");
+          const nextMinutes = minutes + settings.duration;
+          const endHour = String(Math.floor(nextMinutes / 60)).padStart(2, "0");
+          const endMinute = String(nextMinutes % 60).padStart(2, "0");
+          const start = localToUtc(`${key}T${hour}:${minute}`, settings.timezone);
+          const finish = localToUtc(`${key}T${endHour}:${endMinute}`, settings.timezone);
+          const isPast = start.getTime() < now.getTime();
+          const isBusy = busy.some((period: { start: number; end: number }) => start.getTime() < period.end && finish.getTime() > period.start);
+          if (!isPast && !isBusy) slots.push({ start: start.toISOString(), end: finish.toISOString(), label: localLabel(start, settings.timezone) });
+        }
       }
     }
-    dates.push({ date: key, label: new Intl.DateTimeFormat("en-US", { timeZone: settings.timezone, weekday: "long", month: "short", day: "numeric" }).format(localToUtc(`${key}T12:00`, settings.timezone)), slots });
+    dates.push({ date: key, weekday, slots });
   }
-  return { timezone: settings.timezone, duration: settings.duration, dates };
+  return { timezone: settings.timezone, duration: settings.duration, month, currentMonthKey, maxMonthKey, dates };
 }
 
 export async function createBooking(input: { name: string; email: string; company?: string; phone?: string; callType?: string; message?: string; start: string; end: string }) {

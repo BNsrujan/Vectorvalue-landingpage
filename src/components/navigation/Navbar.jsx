@@ -6,8 +6,7 @@ import { Icon } from "../core/Icon.jsx";
 import { Button } from "../core/Button.jsx";
 import { MegaMenu } from "./MegaMenu.jsx";
 
-/* Sticky primary navigation. Transparent over a hero, solid white once scrolled.
-   Collapses to a hamburger + drawer below 980px. */
+
 export function Navbar({
   logoSrc = "assets/logo/vectorvalue-mark.png", brand = "VectorValue",
   items = [], activeHref = "/", cta = { label: "Book a Call", href: "/book-a-call" },
