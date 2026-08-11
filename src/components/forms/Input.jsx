@@ -31,7 +31,7 @@ export function Input({
             width: "100%", height: "var(--control-height)",
             padding: iconLeft ? "0 16px 0 42px" : "0 16px",
             background: disabled ? "var(--neutral-100)" : "var(--surface-page)",
-            color: "var(--text-primary)", fontFamily: "var(--font-core)", fontSize: "var(--text-body-sm)",
+            color: "var(--text-primary)", fontFamily: "var(--font-core)", fontSize: "max(16px, var(--text-body-sm))",
             border: "1px solid " + borderColor, borderRadius: "var(--radius-control)",
             outline: "none", boxShadow: focus && !error ? "var(--shadow-focus)" : "none",
             transition: "var(--transition-control)",

@@ -19,7 +19,7 @@ export function Textarea({ label, name, value, defaultValue, onChange, placehold
         style={{
           width: "100%", padding: "14px 16px", resize: "vertical",
           background: disabled ? "var(--neutral-100)" : "var(--surface-page)", color: "var(--text-primary)",
-          fontFamily: "var(--font-core)", fontSize: "var(--text-body-sm)", lineHeight: "var(--leading-body)",
+          fontFamily: "var(--font-core)", fontSize: "max(16px, var(--text-body-sm))", lineHeight: "var(--leading-body)",
           border: "1px solid " + borderColor, borderRadius: "var(--radius-control)", outline: "none",
           boxShadow: focus && !error ? "var(--shadow-focus)" : "none", transition: "var(--transition-control)",
         }}

@@ -208,7 +208,7 @@ function BookingForm() {
                   type="button"
                   disabled={!date.slots.length}
                   onClick={() => { setSelectedDate(date.date); setSelectedSlot(date.slots[0] || null); }}
-                  className={`aspect-square border p-1 [font:var(--type-body-sm)] transition-colors disabled:cursor-not-allowed disabled:opacity-30 ${selectedDate === date.date ? "border-[var(--orange-600)] bg-[var(--orange-050)]" : "border-[var(--border-default)] hover:border-[var(--ink-800)]"}`}
+                  className={`aspect-square border p-0.5 [font:var(--type-body-sm)] transition-colors disabled:cursor-not-allowed disabled:opacity-30 ${selectedDate === date.date ? "border-[var(--orange-600)] bg-[var(--orange-050)]" : "border-[var(--border-default)] hover:border-[var(--ink-800)]"}`}
                 >
                   {Number(date.date.slice(-2))}
                 </button>

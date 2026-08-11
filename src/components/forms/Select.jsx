@@ -22,7 +22,7 @@ export function Select({ label, name, options = [], value, defaultValue, onChang
             appearance: "none", WebkitAppearance: "none",
             background: disabled ? "var(--neutral-100)" : "var(--surface-page)",
             color: value || defaultValue ? "var(--text-primary)" : "var(--text-muted)",
-            fontFamily: "var(--font-core)", fontSize: "var(--text-body-sm)",
+            fontFamily: "var(--font-core)", fontSize: "max(16px, var(--text-body-sm))",
             border: "1px solid " + borderColor, borderRadius: "var(--radius-control)", outline: "none",
             boxShadow: focus && !error ? "var(--shadow-focus)" : "none", transition: "var(--transition-control)",
           }}
