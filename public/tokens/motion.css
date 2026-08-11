@@ -1,0 +1,24 @@
+/* VectorValue motion — precise, quick in, long tail. Nothing bounces. */
+:root{
+--dur-instant:120ms; /* @kind other */
+--dur-1:180ms; /* @kind other */
+--dur-2:260ms; /* @kind other */
+--dur-3:380ms; /* @kind other */
+--dur-4:560ms; /* @kind other */
+--dur-5:800ms; /* @kind other */
+--ease-standard:cubic-bezier(.22,.61,.36,1); /* @kind other */
+--ease-out-expo:cubic-bezier(.16,1,.3,1); /* @kind other */
+--ease-in-out:cubic-bezier(.65,0,.35,1); /* @kind other */
+--ease-linear:linear; /* @kind other */
+--transition-control:color var(--dur-1) var(--ease-standard),background-color var(--dur-1) var(--ease-standard),border-color var(--dur-1) var(--ease-standard),box-shadow var(--dur-1) var(--ease-standard);
+--transition-reveal:opacity var(--dur-4) var(--ease-out-expo),transform var(--dur-4) var(--ease-out-expo);
+--reveal-offset:24px; /* @kind spacing */
+--stagger-step:70ms /* @kind other */
+}
+@media (prefers-reduced-motion:reduce){:root{--dur-1:1ms; /* @kind other */
+--dur-2:1ms; /* @kind other */
+--dur-3:1ms; /* @kind other */
+--dur-4:1ms; /* @kind other */
+--dur-5:1ms; /* @kind other */
+--reveal-offset:0px; /* @kind spacing */
+--stagger-step:0ms /* @kind other */}}

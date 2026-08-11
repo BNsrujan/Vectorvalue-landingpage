@@ -91,7 +91,7 @@ export function PageHero({ eyebrow, title, lead, crumbs, image, meta, actions }:
         {crumbs ? <Breadcrumbs items={crumbs} tone="dark" style={{ marginBottom: "var(--space-10)" }} /> : null}
         <div style={{ display: "grid", gridTemplateColumns: "var(--split)", gap: "var(--space-16)", alignItems: "end" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-6)" }}>
-            {eyebrow ? <Eyebrow tone="inverse">{eyebrow}</Eyebrow> : null}
+            {/* {eyebrow ? <Eyebrow tone="inverse">{eyebrow}</Eyebrow> : null} */}
             <h1 style={{ font: "var(--type-display-2)", letterSpacing: "var(--tracking-display)", color: "var(--text-inverse)", maxWidth: "16ch" }}>{title}</h1>
             {actions ? <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-4)", marginTop: "var(--space-2)" }}>{actions}</div> : null}
           </div>

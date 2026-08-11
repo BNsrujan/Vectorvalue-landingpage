@@ -1,0 +1,16 @@
+/* Responsive layout tokens. Inline grid styles reference these, so one media query
+   restacks every grid in the system. Breakpoints: 1180 · 960 · 700 · 480. */
+:root{
+--cols-2:repeat(2,minmax(0,1fr)); /* @kind other */
+--cols-3:repeat(3,minmax(0,1fr)); /* @kind other */
+--cols-4:repeat(4,minmax(0,1fr)); /* @kind other */
+--cols-5:repeat(5,minmax(0,1fr)); /* @kind other */
+--split:minmax(0,1.4fr) minmax(0,1fr); /* @kind other */
+--split-rev:minmax(0,1fr) minmax(0,1.5fr); /* @kind other */
+--mega-cols:1fr 1fr 1fr 300px; /* @kind other */
+--footer-cols:1.4fr 1fr 1fr 1fr /* @kind other */
+}
+@media (max-width:1180px){:root{--cols-5:repeat(3,minmax(0,1fr));--cols-4:repeat(2,minmax(0,1fr));--mega-cols:1fr 1fr;--footer-cols:1.2fr 1fr 1fr}}
+@media (max-width:960px){:root{--cols-3:repeat(2,minmax(0,1fr));--split:minmax(0,1fr);--split-rev:minmax(0,1fr);--footer-cols:1fr 1fr;--section-y:clamp(56px,7vw,88px)}}
+@media (max-width:700px){:root{--cols-2:minmax(0,1fr);--cols-3:minmax(0,1fr);--cols-4:repeat(2,minmax(0,1fr));--cols-5:repeat(2,minmax(0,1fr));--mega-cols:1fr;--footer-cols:1fr;--card-pad:24px;--container-gutter:20px;--section-y:64px;--section-y-tight:48px}}
+@media (max-width:480px){:root{--cols-4:minmax(0,1fr);--cols-5:minmax(0,1fr);--text-display-1:clamp(2.25rem,10vw,2.75rem);--text-body-xl:1.0625rem}}

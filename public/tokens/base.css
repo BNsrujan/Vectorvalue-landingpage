@@ -1,0 +1,17 @@
+/* Minimal global base — element defaults only, no utility framework */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font:var(--type-body);color:var(--text-primary);background:var(--surface-page);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4,h5,h6{margin:0;color:var(--text-primary);text-wrap:balance}
+h1{font:var(--type-h1);letter-spacing:var(--tracking-heading)}
+h2{font:var(--type-h2);letter-spacing:var(--tracking-heading)}
+h3{font:var(--type-h3);letter-spacing:var(--tracking-title)}
+h4{font:var(--type-h4);letter-spacing:var(--tracking-title)}
+p{margin:0;text-wrap:pretty}
+a{color:var(--text-link);text-decoration-color:color-mix(in srgb,var(--text-link) 40%,transparent);text-underline-offset:3px;transition:var(--transition-control)}
+a:hover{color:var(--text-link-hover);text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+::selection{background:var(--selection-bg);color:var(--selection-fg)}
+img,video,svg{display:block;max-width:100%}
+hr{border:0;border-top:var(--rule-hairline);margin:0}
+button,input,select,textarea{font:inherit;color:inherit}

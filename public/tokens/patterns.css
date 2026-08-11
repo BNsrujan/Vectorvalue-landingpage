@@ -1,0 +1,16 @@
+/* VectorValue technical motifs — blueprint grids, hairline rules, measurement marks */
+:root{
+--grid-size:44px; /* @kind spacing */
+--grid-size-lg:88px; /* @kind spacing */
+--grid-line:rgba(33,37,49,.055);--grid-line-strong:rgba(33,37,49,.10);
+--grid-line-dark:rgba(255,255,255,.06);--grid-line-dark-strong:rgba(255,255,255,.11);
+--pattern-blueprint:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+--pattern-blueprint-dark:linear-gradient(var(--grid-line-dark) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line-dark) 1px,transparent 1px);
+--pattern-hatch:repeating-linear-gradient(45deg,var(--grid-line-strong) 0 1px,transparent 1px 8px);
+--pattern-dot:radial-gradient(var(--grid-line-strong) 1px,transparent 1px);
+--rule-hairline:1px solid var(--border-hairline);
+--rule-accent:2px solid var(--border-accent);
+--marker-pulse-color:rgba(235,92,32,.45)
+}
+.vv-blueprint{background-image:var(--pattern-blueprint);background-size:var(--grid-size) var(--grid-size)}
+.vv-blueprint-dark{background-image:var(--pattern-blueprint-dark);background-size:var(--grid-size) var(--grid-size)}
