@@ -123,7 +123,7 @@ export const navItems = [
   { label: "Core Expertise", href: "/core-expertise", mega: true },
   { label: "About", href: "/company" },
   { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
+  // { label: "Contact", href: "/contact" }, // hidden for now — Book a Call is the sole contact route
 ];
 
 export const megaGroups = [
@@ -133,7 +133,8 @@ export const megaGroups = [
 ];
 
 export const footerLinks = [
-  { title: "Explore", links: [{ label: "Home", href: "/" }, { label: "Core Expertise", href: "/core-expertise" }, { label: "About", href: "/company" }, { label: "Careers", href: "/careers" }, { label: "Contact", href: "/contact" }] },
+  // "Contact" entries hidden for now — Book a Call is the sole contact route
+  { title: "Explore", links: [{ label: "Home", href: "/" }, { label: "Core Expertise", href: "/core-expertise" }, { label: "About", href: "/company" }, { label: "Careers", href: "/careers" }] },
   { title: "Expertise", links: [{ label: "Civil Engineering", href: "/core-expertise/civil-engineering" }, { label: "Structural Engineering", href: "/core-expertise/structural-engineering" }, { label: "Foundation Engineering", href: "/core-expertise/foundation-engineering" }] },
-  { title: "Connect", links: [{ label: "Book a Call", href: "/book-a-call" }, { label: "Contact", href: "/contact" }, { label: "Email", href: `mailto:${companyConfig.email}` }, { label: "LinkedIn", href: companyConfig.linkedinUrl }] },
+  { title: "Connect", links: [{ label: "Book a Call", href: "/book-a-call" }, { label: "Email", href: `mailto:${companyConfig.email}` }, { label: "LinkedIn", href: companyConfig.linkedinUrl }] },
 ];

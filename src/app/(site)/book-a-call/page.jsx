@@ -140,13 +140,13 @@ function BookingForm() {
 
       <div className="mb-[var(--space-8)] border-t border-[var(--border-hairline)] pt-[var(--space-8)]">
         <div className="flex flex-wrap items-end justify-between gap-3">
-          <div><Annotation>Step 03 · Choose a date and time</Annotation><p className="mt-2 [color:var(--text-secondary)] [font:var(--type-body-sm)]">Times shown in {availability?.timezone || "your configured timezone"} · {availability?.duration || 30} minutes</p></div>
+          <div><Annotation>Step 03 · Choose a date and time</Annotation><p className="mt-2 [color:var(--text-secondary)] [font:var(--type-body-sm)]"> {availability?.timezone || "your configured timezone"} · {availability?.duration || 30} minutes</p></div>
           {availabilityStatus === "loading" ? <Annotation>Checking calendar…</Annotation> : null}
         </div>
         {availabilityStatus === "error" ? <p className="mt-5 flex items-center gap-2 text-[var(--status-error)] [font:var(--type-body-sm)]"><Icon name="alert-circle" size={16} />Calendar availability is not configured yet.</p> : null}
         {availabilityStatus === "ready" ? (
           <>
-            <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
+            <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
               {availability.dates.map((date) => (
                 <button key={date.date} type="button" disabled={!date.slots.length} onClick={() => { setSelectedDate(date.date); setSelectedSlot(date.slots[0] || null); }} className={`min-h-20 border p-3 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${selectedDate === date.date ? "border-[var(--orange-600)] bg-[var(--orange-050)]" : "border-[var(--border-default)] hover:border-[var(--ink-800)]"}`}>
                   <span className="block [font:var(--type-mono)] text-[10px] uppercase text-[var(--text-muted)]">{date.label.split(",")[0]}</span>
