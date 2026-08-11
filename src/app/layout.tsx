@@ -1,39 +1,43 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import type { ReactNode } from "react";
 import "./globals.css";
+import { Navbar } from "@/components/navigation/Navbar.jsx";
+import { Footer } from "@/components/navigation/Footer.jsx";
 import { cn } from "@/lib/utils";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { companyConfig, navItems, megaGroups, footerLinks } from "@/lib/siteData";
 
 export const metadata: Metadata = {
   title: "VectorValue",
   description: "Engineering estimation, design and technical expertise for international project teams.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+const headerCta = { label: "Book a Call", href: "/book-a-call" };
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  const contact = {
+    email: companyConfig.email,
+    phone: companyConfig.phone,
+    linkedin: companyConfig.linkedin,
+    linkedinUrl: companyConfig.linkedinUrl,
+  };
+
   return (
-    <html
-      lang="en"
-      className={cn(
-        "h-full",
-        "antialiased",
-        geistSans.variable,
-        geistMono.variable,
-        "font-sans",
-        inter.variable,
-      )}
-    >
-      <body className={cn("min-h-full", "flex", "flex-col", "bg-background", "text-foreground")}>{children}</body>
+    <html lang="en" className={cn("h-full", "antialiased", "font-sans")}>
+      <body className={cn("min-h-full", "flex", "flex-col", "bg-background", "text-foreground")}>
+        <Navbar
+          items={navItems}
+          megaGroups={megaGroups}
+          logoSrc="/assets/logo/vectorvalue-mark.png"
+          cta={headerCta}
+        />
+        <main className="flex-1">{children}</main>
+        <Footer
+          logoSrc="/assets/logo/vectorvalue-mark.png"
+          columns={footerLinks}
+          contact={contact}
+          legal={[{ label: "Privacy Notice", href: "/contact" }, { label: "Terms", href: "/contact" }]}
+        />
+      </body>
     </html>
   );
 }

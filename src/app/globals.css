@@ -1,6 +1,17 @@
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "../tokens/fonts.css";
+@import "../tokens/colors.css";
+@import "../tokens/typography.css";
+@import "../tokens/spacing.css";
+@import "../tokens/surfaces.css";
+@import "../tokens/motion.css";
+@import "../tokens/patterns.css";
+@import "../tokens/responsive.css";
+@import "../tokens/base.css";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -117,15 +128,7 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@import url("src/app/tokens/fonts.css");
-@import url("src/app/tokens/colors.css");
-@import url("src/app/tokens/typography.css");
-@import url("src/app/tokens/spacing.css");
-@import url("src/app/tokens/surfaces.css");
-@import url("src/app/tokens/motion.css");
-@import url("src/app/tokens/patterns.css");
-@import url("src/app/tokens/responsive.css");
-@import url("src/app/tokens/base.css");
+
 
 @layer base {
   * {

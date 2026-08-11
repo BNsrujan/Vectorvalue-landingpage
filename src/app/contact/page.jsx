@@ -21,11 +21,11 @@ function ContactForm() {
   const submit = (event) => {
     event.preventDefault();
     const next = {};
-    if (\!values.name.trim()) next.name = "Full name is required";
-    if (\!values.company.trim()) next.company = "Company name is required";
-    if (\!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(values.email)) next.email = "Enter a valid work email";
-    if (\!values.country.trim()) next.country = "Country is required";
-    if (\!values.service) next.service = "Select the service you need";
+    if (!values.name.trim()) next.name = "Full name is required";
+    if (!values.company.trim()) next.company = "Company name is required";
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(values.email)) next.email = "Enter a valid work email";
+    if (!values.country.trim()) next.country = "Country is required";
+    if (!values.service) next.service = "Select the service you need";
     setErrors(next);
     if (Object.keys(next).length) {
       setStatus("error");

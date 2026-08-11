@@ -7,7 +7,7 @@ import React from "react";
 export function ScrollVideo({
   src, poster, height = "100vh", track = 260, children,
   scrim = "linear-gradient(180deg, rgba(15,18,25,.72) 0%, rgba(15,18,25,.30) 38%, rgba(15,18,25,.78) 100%)",
-  smoothing = 0.18, style, ...rest
+  smoothing = 0.18, className, style, ...rest
 }) {
   const wrapRef = React.useRef(null);
   const videoRef = React.useRef(null);
@@ -68,7 +68,7 @@ export function ScrollVideo({
   }, [smoothing]);
 
   return (
-    <div ref={wrapRef} style={{ position: "relative", height: fallback ? height : "calc(" + track + "vh)", ...style }} {...rest}>
+    <div ref={wrapRef} className={className} style={{ position: "relative", height: fallback ? height : "calc(" + track + "vh)", ...style }} {...rest}>
       <div style={{ position: "sticky", top: 0, height, overflow: "hidden", background: "var(--ink-950)" }}>
         <video
           ref={videoRef} src={src} poster={poster} muted playsInline preload="auto"

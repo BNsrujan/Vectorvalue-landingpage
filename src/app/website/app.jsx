@@ -1,5 +1,5 @@
 const { Button, Eyebrow, ScrollReveal } = window.VectorValueDesignSystem_16e0ef;
-const { Container, Section, Annotation, SiteHeader, SiteFooter, PageHero, CTABand, HomeScreen, CoreExpertiseScreen, ServiceScreen, AboutScreen, CareersScreen, ContactScreen, BookACallScreen } = window;
+const { Container, Section, Annotation, PageHero, CTABand, HomeScreen, CoreExpertiseScreen, ServiceScreen, AboutScreen, CareersScreen, ContactScreen, BookACallScreen } = window;
 
 function ResourcesScreen({ go }) {
   return (
@@ -56,11 +56,7 @@ function App() {
   else screen = <ResourcesScreen go={go} />;
 
   return (
-    <div>
-      <SiteHeader route={route} go={go} variant={route === "/" ? "overlay" : "solid"} />
-      <div key={route} className="vv-page">{screen}</div>
-      <SiteFooter go={go} />
-    </div>
+    <div key={route} className="vv-page">{screen}</div>
   );
 }
 

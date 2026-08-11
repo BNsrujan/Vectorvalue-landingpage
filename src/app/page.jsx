@@ -1,33 +1,50 @@
-const { Button, Eyebrow, ServiceCard, StatBlock, ProcessStep, DeliverableTile, ScrollReveal, SectionHeading, DottedWorldMap, ScrollVideo, TextReveal, Icon, Tag } = window.VectorValueDesignSystem_16e0ef;
-const { Container, Section, Annotation, CTABand } = window;
+"use client";
 
-function Hero({ go }) {
+import React from "react";
+import { Button } from "@/components/core/Button.jsx";
+import { Eyebrow } from "@/components/core/Eyebrow.jsx";
+import { ServiceCard } from "@/components/content/ServiceCard.jsx";
+import { StatBlock } from "@/components/content/StatBlock.jsx";
+import { ProcessStep } from "@/components/content/ProcessStep.jsx";
+import { DeliverableTile } from "@/components/content/DeliverableTile.jsx";
+import { ScrollReveal } from "@/components/content/ScrollReveal.jsx";
+import { SectionHeading } from "@/components/content/SectionHeading.jsx";
+import { DottedWorldMap } from "@/components/data/DottedWorldMap.jsx";
+import { ScrollVideo } from "@/components/data/ScrollVideo.jsx";
+import { TextReveal } from "@/components/data/TextReveal.jsx";
+import { Icon } from "@/components/core/Icon.jsx";
+import { Tag } from "@/components/core/Tag.jsx";
+import { Container, Section, Annotation, CTABand } from "@/components/site-components.tsx";
+import { expertise, TARGET_MARKETS, MARKET_LINKS, pillars, process, deliverables, clientTypes, insights } from "@/lib/siteData.ts";
+
+function Hero() {
   return (
-    <ScrollVideo src={window.vvAsset("hero-video","../../assets/video/hero-aerial-drone.mp4")} track={280} height="100vh" style={{ marginTop: -76 }} scrim="linear-gradient(180deg, rgba(15,18,25,.62) 0%, rgba(15,18,25,.18) 40%, rgba(15,18,25,.72) 100%)">
+    <ScrollVideo src="/assets/video/hero-aerial-drone.mp4" track={280} height="100vh" className="-mt-[76px]" scrim="linear-gradient(180deg, rgba(15,18,25,.22) 0%, rgba(15,18,25,.72) 100%)">
       {(p) => (
-        <div style={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", paddingTop: 76 }}>
-          <Container style={{ flex: 1, display: "flex", alignItems: "center" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-7)", maxWidth: 880, padding: "clamp(24px,3vw,44px)", background: "linear-gradient(135deg, rgba(15,18,25,.62) 0%, rgba(15,18,25,.34) 100%)", backdropFilter: "blur(16px) saturate(1.05)", WebkitBackdropFilter: "blur(16px) saturate(1.05)", border: "1px solid rgba(255,255,255,.10)", borderLeft: "2px solid var(--orange-600)" }}>
+        <div className="flex h-full flex-col justify-between pt-[76px]">
+          <Container className="flex flex-1 items-center">
+            <div className="flex max-w-[880px] flex-col gap-[var(--space-7)] p-[clamp(24px,3vw,44px)]">
               <Eyebrow tone="inverse">Engineering · Estimation · Design</Eyebrow>
-              <h1 style={{ font: "var(--type-display-1)", letterSpacing: "var(--tracking-display)", color: "var(--text-inverse)" }}>
-                Engineering Precision.<br /><span style={{ color: "var(--orange-600)" }}>Measured</span> Value.
+              <h1 className="[font:var(--type-display-1)] [letter-spacing:var(--tracking-display)] [color:var(--text-inverse)]">
+                Engineering Precision.<br />
+                <span className="[color:var(--orange-600)]">Measured</span> Value.
               </h1>
-              <p style={{ font: "var(--type-body-xl)", lineHeight: "var(--leading-relaxed)", color: "var(--text-inverse-secondary)", maxWidth: "56ch" }}>
+              <p className="max-w-[56ch] [font:var(--type-body-xl)] [line-height:var(--leading-relaxed)] [color:var(--text-inverse-secondary)]">
                 VectorValue provides engineering estimation, design, technical analysis and documentation support for international projects — helping teams make informed decisions before construction begins.
               </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-4)", marginTop: "var(--space-2)" }}>
-                <Button variant="primary" size="lg" withArrow href="/core-expertise" onClick={(e) => { e.preventDefault(); go("/core-expertise"); }}>Explore Our Expertise</Button>
-                <Button variant="outline-inverse" size="lg" href="/book-a-call" onClick={(e) => { e.preventDefault(); go("/book-a-call"); }}>Book a Call</Button>
+              <div className="mt-[var(--space-2)] flex flex-wrap gap-[var(--space-4)]">
+                <Button variant="primary" size="lg" withArrow href="/core-expertise">Explore Our Expertise</Button>
+                <Button variant="outline-inverse" size="lg" href="/book-a-call">Book a Call</Button>
               </div>
             </div>
           </Container>
-          <Container style={{ paddingBottom: "var(--space-8)" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-5)", flexWrap: "wrap", paddingTop: "var(--space-5)", borderTop: "1px solid rgba(255,255,255,.16)" }}>
+          <Container className="pb-[var(--space-8)]">
+            <div className="flex flex-wrap items-center justify-between gap-[var(--space-5)] border-t border-white/15 pt-[var(--space-5)]">
               <Annotation tone="dark">Scroll to advance · aerial survey reference</Annotation>
-              <div style={{ flex: 1, maxWidth: 420, height: 2, background: "rgba(255,255,255,.16)", position: "relative" }}>
-                <span style={{ position: "absolute", inset: 0, width: (p * 100).toFixed(1) + "%", background: "var(--orange-600)" }} />
+              <div className="relative h-0.5 max-w-[420px] flex-1 bg-white/15">
+                <span className="absolute inset-y-0 left-0 [background:var(--orange-600)]" style={{ width: `${(p * 100).toFixed(1)}%` }} />
               </div>
-              <Annotation tone="dark" style={{ fontVariantNumeric: "tabular-nums" }}>{String(Math.round(p * 100)).padStart(3, "0")} / 100</Annotation>
+              <Annotation tone="dark" className="[font-variant-numeric:tabular-nums]">{String(Math.round(p * 100)).padStart(3, "0")} / 100</Annotation>
             </div>
           </Container>
         </div>
@@ -38,17 +55,17 @@ function Hero({ go }) {
 
 function IntroStatement() {
   return (
-    <div style={{ background: "var(--ink-950)", backgroundImage: "var(--pattern-blueprint-dark)", backgroundSize: "var(--grid-size-lg) var(--grid-size-lg)" }}>
+    <div className="[background:var(--ink-950)] [background-image:var(--pattern-blueprint-dark)] [background-size:var(--grid-size-lg)_var(--grid-size-lg)]">
       <Container>
-        <div style={{ display: "grid", gridTemplateColumns: "var(--split)", gap: "var(--space-16)", alignItems: "start" }}>
+        <div className="grid items-start gap-[var(--space-16)] [grid-template-columns:var(--split)]">
           <TextReveal tone="dark" track={150} accentWords={["before", "execution"]}>
             Engineering value is decided before execution — in the quantities, the calculations and the assumptions behind them.
           </TextReveal>
-          <div style={{ position: "sticky", top: "34vh", display: "flex", flexDirection: "column", gap: "var(--space-8)", paddingBottom: "var(--space-20)" }}>
-            <p style={{ font: "var(--type-body-lg)", color: "var(--text-inverse-secondary)" }}>
+          <div className="sticky top-[34vh] flex flex-col gap-[var(--space-8)] pb-[var(--space-20)] md:py-[324px]">
+            <p className="reveal-text [font:var(--type-body-lg)] [color:var(--text-inverse-secondary)]">
               We work in the window where a project is still a decision: comparing options, measuring scope and documenting the reasoning — so the numbers your team commits to are the numbers the project can hold.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "var(--cols-2)", gap: "var(--space-8)" }}>
+            <div className="grid gap-[var(--space-8)] [grid-template-columns:var(--cols-2)]">
               <StatBlock tone="dark" value={6} label="Engineering disciplines" />
               <StatBlock tone="dark" value="Remote" label="Delivery model" />
             </div>
@@ -60,19 +77,25 @@ function IntroStatement() {
   );
 }
 
-function ExpertiseGrid({ go }) {
+function ExpertiseGrid() {
   return (
     <Section tone="paper" id="expertise">
       <Container>
         <SectionHeading index="04" eyebrow="Core Expertise" title="Six disciplines, one engineering standard."
           lead="Estimation, design, analysis and documentation delivered remotely to international project teams — engineering work only, never construction execution."
-          action={<Button variant="outline" withArrow href="/core-expertise" onClick={(e) => { e.preventDefault(); go("/core-expertise"); }}>All expertise</Button>} />
-        <div style={{ display: "grid", gridTemplateColumns: "var(--cols-3)", gap: 1, background: "var(--neutral-300)", border: "1px solid var(--neutral-300)", marginTop: "var(--space-12)" }}>
-          {window.expertise.map((e, i) => (
-            <ScrollReveal key={e.slug} delay={i * 70}>
-              <ServiceCard icon={e.icon} title={e.title} description={e.summary} services={e.services} meta={String(i + 1).padStart(2, "0") + " / 06"}
-                href={"/core-expertise/" + e.slug} style={{ height: "100%" }}
-                onClick={(ev) => { ev.preventDefault(); go("/core-expertise/" + e.slug); }} />
+          action={<Button variant="outline" withArrow href="/core-expertise">All expertise</Button>} />
+        <div className="mt-[var(--space-12)] grid gap-px border border-[var(--neutral-300)] bg-[var(--neutral-300)] [grid-template-columns:var(--cols-3)]">
+          {expertise.map((item, index) => (
+            <ScrollReveal key={item.slug} delay={index * 70}>
+              <ServiceCard
+                icon={item.icon}
+                title={item.title}
+                description={item.summary}
+                services={item.services}
+                meta={`${String(index + 1).padStart(2, "0")} / 06`}
+                href={`/core-expertise/${item.slug}`}
+                className="h-full"
+              />
             </ScrollReveal>
           ))}
         </div>
@@ -85,17 +108,17 @@ function GlobalReach() {
   return (
     <Section tone="deep" grid>
       <Container>
-        <div style={{ display: "grid", gridTemplateColumns: "var(--split-rev)", gap: "var(--space-12)", alignItems: "center" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-6)" }}>
+        <div className="grid items-center gap-[var(--space-12)] [grid-template-columns:var(--split-rev)]">
+          <div className="flex flex-col gap-[var(--space-6)]">
             <Eyebrow index="05" tone="inverse">Global Reach</Eyebrow>
-            <h2 style={{ font: "var(--type-h1)", letterSpacing: "var(--tracking-heading)", color: "var(--text-inverse)" }}>Global engineering<br />without borders.</h2>
-            <p style={{ font: "var(--type-body-lg)", color: "var(--text-inverse-secondary)", maxWidth: "44ch" }}>
+            <h2 className="[font:var(--type-h1)] [letter-spacing:var(--tracking-heading)] [color:var(--text-inverse)]">Global engineering<br />without borders.</h2>
+            <p className="max-w-[44ch] [font:var(--type-body-lg)] [color:var(--text-inverse-secondary)]">
               Supporting international project teams with remote engineering expertise — structured around your drawing standards, measurement rules and working hours.
             </p>
             <Annotation tone="dark">Markers indicate target markets for remote engineering support — not offices or completed projects.</Annotation>
           </div>
           <ScrollReveal from="right">
-            <DottedWorldMap markers={window.TARGET_MARKETS} connections={window.MARKET_LINKS} tone="dark" height={460} />
+            <DottedWorldMap markers={TARGET_MARKETS} connections={MARKET_LINKS} tone="dark" height={460} />
           </ScrollReveal>
         </div>
       </Container>
@@ -107,14 +130,14 @@ function WhyVectorValue() {
   return (
     <Section tone="subtle">
       <Container>
-        <SectionHeading index="06" eyebrow="Why VectorValue" title="Built around how engineering decisions are actually made." maxWidth="30ch" />
-        <div style={{ display: "grid", gridTemplateColumns: "var(--cols-3)", gap: "var(--space-10)", marginTop: "var(--space-12)" }}>
-          {window.pillars.map((p, i) => (
-            <ScrollReveal key={p.title} delay={i * 60}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)", paddingTop: "var(--space-6)", borderTop: "1px solid var(--border-default)" }}>
-                <span style={{ color: "var(--text-accent)" }}><Icon name={p.icon} size={22} /></span>
-                <h3 style={{ font: "var(--type-h4)", fontSize: "var(--text-body-lg)" }}>{p.title}</h3>
-                <p style={{ font: "var(--type-body-sm)", color: "var(--text-secondary)" }}>{p.body}</p>
+        <SectionHeading index="06" eyebrow="Why VectorValue" title="Built around how engineering decisions are actually made." />
+        <div className="mt-[var(--space-12)] grid gap-[var(--space-10)] [grid-template-columns:var(--cols-3)]">
+          {pillars.map((pillar, index) => (
+            <ScrollReveal key={pillar.title} delay={index * 60}>
+              <div className="flex flex-col gap-[var(--space-4)] border-t border-[var(--border-default)] pt-[var(--space-6)]">
+                <span className="[color:var(--text-accent)]"><Icon name={pillar.icon} size={22} /></span>
+                <h3 className="[font:var(--type-h4)] [font-size:var(--text-body-lg)]">{pillar.title}</h3>
+                <p className="[font:var(--type-body-sm)] [color:var(--text-secondary)]">{pillar.body}</p>
               </div>
             </ScrollReveal>
           ))}
@@ -128,10 +151,12 @@ function HowWeWork() {
   return (
     <Section tone="paper">
       <Container>
-        <SectionHeading index="07" eyebrow="How We Work" title="Understand → Analyze → Estimate → Review → Deliver" maxWidth="34ch"
+        <SectionHeading index="07" eyebrow="How We Work" title="Understand → Analyze → Estimate → Review → Deliver"
           lead="A fixed sequence, applied to every engagement regardless of size." />
-        <div style={{ display: "grid", gridTemplateColumns: "var(--cols-5)", gap: "var(--space-8)", marginTop: "var(--space-14)" }}>
-          {window.process.map((s, i) => <ProcessStep key={s.index} index={s.index} title={s.title} body={s.body} last={i === window.process.length - 1} />)}
+        <div className="mt-[var(--space-14)] grid gap-[var(--space-8)] [grid-template-columns:var(--cols-5)]">
+          {process.map((step, index) => (
+            <ProcessStep key={step.index} index={step.index} title={step.title} body={step.body} last={index === process.length - 1} />
+          ))}
         </div>
       </Container>
     </Section>
@@ -142,12 +167,12 @@ function WhatWeDeliver() {
   return (
     <Section tone="ink" grid>
       <Container>
-        <SectionHeading index="08" eyebrow="What We Deliver" tone="dark" title="Deliverables your team can use on arrival." maxWidth="26ch"
+        <SectionHeading index="08" eyebrow="What We Deliver" tone="dark" title="Deliverables your team can use on arrival." 
           lead="Organised, referenced and issued with the assumptions that produced them." />
-        <div style={{ display: "grid", gridTemplateColumns: "var(--cols-5)", gap: 1, background: "rgba(255,255,255,.10)", border: "1px solid rgba(255,255,255,.10)", marginTop: "var(--space-12)" }}>
-          {window.deliverables.map((d) => (
-            <div key={d.title} style={{ background: "var(--ink-900)" }}>
-              <DeliverableTile icon={d.icon} title={d.title} formats={d.formats} tone="dark" />
+        <div className="mt-[var(--space-12)] grid gap-px border border-white/10 bg-white/10 [grid-template-columns:var(--cols-3)]">
+          {deliverables.map((deliverable) => (
+            <div key={deliverable.title} className="[background:var(--ink-900)]">
+              <DeliverableTile icon={deliverable.icon} title={deliverable.title} formats={deliverable.formats} tone="dark" />
             </div>
           ))}
         </div>
@@ -160,13 +185,13 @@ function WhoWeSupport() {
   return (
     <Section tone="paper">
       <Container>
-        <SectionHeading index="09" eyebrow="Who We Support" title="Engineering support for the teams that carry the project." maxWidth="28ch" />
-        <div style={{ display: "grid", gridTemplateColumns: "var(--cols-4)", gap: 1, background: "var(--neutral-300)", border: "1px solid var(--neutral-300)", marginTop: "var(--space-12)" }}>
-          {window.clientTypes.map((c, i) => (
-            <div key={c.title} style={{ background: "var(--surface-page)", padding: "var(--space-8) var(--space-6)", display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
-              <Annotation>{String(i + 1).padStart(2, "0")}</Annotation>
-              <h3 style={{ font: "var(--type-h4)", fontSize: "var(--text-body)" }}>{c.title}</h3>
-              <p style={{ font: "var(--type-body-sm)", fontSize: "var(--text-caption)", color: "var(--text-secondary)" }}>{c.body}</p>
+        <SectionHeading index="09" eyebrow="Who We Support" title="Engineering support for the teams that carry the project."  />
+        <div className="mt-[var(--space-12)] grid gap-px border border-[var(--neutral-300)] bg-[var(--neutral-300)] [grid-template-columns:var(--cols-4)]">
+          {clientTypes.map((client, index) => (
+            <div key={client.title} className="flex flex-col gap-[var(--space-3)] px-[var(--space-6)] py-[var(--space-8)] [background:var(--surface-page)]">
+              <Annotation>{String(index + 1).padStart(2, "0")}</Annotation>
+              <h3 className="[font:var(--type-h4)] [font-size:var(--text-body)]">{client.title}</h3>
+              <p className="[font:var(--type-body-sm)] [font-size:var(--text-caption)] [color:var(--text-secondary)]">{client.body}</p>
             </div>
           ))}
         </div>
@@ -175,25 +200,25 @@ function WhoWeSupport() {
   );
 }
 
-function Insights({ go }) {
+function Insights() {
   return (
     <Section tone="subtle">
       <Container>
         <SectionHeading index="10" eyebrow="Engineering Insights" title="Notes from the work."
-          action={<Button variant="outline" withArrow href="/resources" onClick={(e) => { e.preventDefault(); go("/resources"); }}>All resources</Button>} />
-        <div style={{ display: "grid", gridTemplateColumns: "var(--cols-3)", gap: "var(--space-8)", marginTop: "var(--space-12)" }}>
-          {window.insights.map((a, i) => (
-            <ScrollReveal key={a.title} delay={i * 70}>
-              <a href="/resources" onClick={(e) => { e.preventDefault(); go("/resources"); }} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)", textDecoration: "none", color: "inherit" }}>
-                <div style={{ aspectRatio: "16 / 10", overflow: "hidden", background: "var(--neutral-300)" }}>
-                  <img src={a.image} alt="" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(1) contrast(1.04)" }} />
+          action={<Button variant="outline" withArrow href="/resources">All resources</Button>} />
+        <div className="mt-[var(--space-12)] grid gap-[var(--space-8)] [grid-template-columns:var(--cols-3)]">
+          {insights.map((insight, index) => (
+            <ScrollReveal key={insight.title} delay={index * 70}>
+              <a href="/resources" className="flex flex-col gap-[var(--space-4)] text-inherit no-underline">
+                <div className="aspect-[16/10] overflow-hidden [background:var(--neutral-300)]">
+                  <img src={insight.image} alt="" loading="lazy" className="h-full w-full object-cover [filter:grayscale(1)_contrast(1.04)]" />
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
-                  <Annotation style={{ color: "var(--text-accent)" }}>{a.category}</Annotation>
-                  <Annotation>· {a.read}</Annotation>
+                <div className="flex items-center gap-[var(--space-3)]">
+                  <Annotation className="[color:var(--text-accent)]">{insight.category}</Annotation>
+                  <Annotation>· {insight.read}</Annotation>
                 </div>
-                <h3 style={{ font: "var(--type-h4)", fontSize: "var(--text-body-lg)" }}>{a.title}</h3>
-                <p style={{ font: "var(--type-body-sm)", fontSize: "var(--text-caption)", color: "var(--text-secondary)" }}>{a.excerpt}</p>
+                <h3 className="[font:var(--type-h4)] [font-size:var(--text-body-lg)]">{insight.title}</h3>
+                <p className="[font:var(--type-body-sm)] [font-size:var(--text-caption)] [color:var(--text-secondary)]">{insight.excerpt}</p>
               </a>
             </ScrollReveal>
           ))}
@@ -203,20 +228,19 @@ function Insights({ go }) {
   );
 }
 
-export default function Home({ go }) {
+export default function Home() {
   return (
     <main>
-      <Hero go={go} />
+      <Hero />
       <IntroStatement />
-      <ExpertiseGrid go={go} />
+      <ExpertiseGrid />
       <GlobalReach />
       <WhyVectorValue />
       <HowWeWork />
       <WhatWeDeliver />
       <WhoWeSupport />
-      <Insights go={go} />
-      <CTABand go={go} />
+      <Insights />
+      <CTABand />
     </main>
   );
 }
-

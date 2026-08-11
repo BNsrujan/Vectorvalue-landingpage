@@ -91,3 +91,49 @@ export const faqs = [
   { q: "Do you work with international clients?", a: "Yes. VectorValue is structured for remote engineering delivery to international project teams, working to the drawing standards, measurement rules and file formats your project already uses." },
   { q: "Can you work from our drawings?", a: "Yes — drawings, specifications, tender documents and geotechnical reports are the usual starting point. Where information is missing we list the assumptions we have made instead of leaving them implicit." },
 ];
+
+export const pillars = [
+  { icon: "crosshair", title: "Precision", body: "Quantities and calculations produced through documented workflows, not estimates of estimates." },
+  { icon: "layers", title: "Technical Depth", body: "Civil, structural, foundation, quantity and infrastructure disciplines under one engineering standard." },
+  { icon: "compass", title: "Decision Support", body: "Clear technical information before commitment — options compared, assumptions stated." },
+  { icon: "globe", title: "International Collaboration", body: "Remote engineering support structured around your time zone, drawing standards and file formats." },
+  { icon: "gauge", title: "Efficiency", body: "Deliverables organised so your team can use them immediately, without rebuilding the model." },
+  { icon: "eye", title: "Transparency", body: "Every deliverable states what was included, what was excluded and what it was measured from." },
+];
+
+export const clientTypes = [
+  { title: "Developers", body: "Budget certainty before commitment, and engineering options compared on cost." },
+  { title: "Engineering Consultants", body: "Overflow capacity for take-offs, calculations and documentation during peak load." },
+  { title: "Construction Companies", body: "Pre-construction engineering, estimation, design and technical support. Construction execution remains yours — we do not build, install or contract." },
+  { title: "Project Management Teams", body: "Independent quantities and technical review to test what has been submitted." },
+  { title: "Architects", body: "Structural and foundation engineering support alongside architectural design." },
+  { title: "Quantity Surveyors", body: "Measured quantities and BOQ preparation to feed commercial workflows." },
+  { title: "Infrastructure Companies", body: "Linear take-offs, earthwork balances and utility quantification." },
+  { title: "International Project Owners", body: "A single engineering partner across estimation, design and documentation." },
+];
+
+export const insights = [
+  { category: "Foundation Engineering", title: "Shallow or deep: how foundation selection is actually decided", excerpt: "Ground conditions, load intensity, settlement tolerance and programme — the four inputs that decide a foundation strategy before cost enters the conversation.", read: "8 min", image: "/assets/imagery/towers-upward-monochrome.jpg" },
+  { category: "Estimation", title: "What a defensible basis of estimate contains", excerpt: "The drawing register, measurement rules, inclusions and exclusions that turn a number into a document your commercial team can defend.", read: "6 min", image: "/assets/imagery/engineers-drawings-topdown.jpg" },
+  { category: "Quantity Take-Off", title: "Where take-off errors compound on linear infrastructure", excerpt: "Chainage-based measurement, level data quality and the earthwork balance — three places small errors become large ones.", read: "7 min", image: "/assets/imagery/coastal-viaduct-aerial.jpg" },
+];
+
+export const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Core Expertise", href: "/core-expertise", mega: true },
+  { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/contact" },
+];
+
+export const megaGroups = [
+  { title: "Civil Engineering", href: "/core-expertise/civil-engineering", icon: "ruler", items: [] },
+  { title: "Structural Engineering", href: "/core-expertise/structural-engineering", icon: "frame", items: [] },
+  { title: "Foundation Engineering", href: "/core-expertise/foundation-engineering", icon: "layers", items: [] },
+];
+
+export const footerLinks = [
+  { title: "Explore", links: [{ label: "Home", href: "/" }, { label: "Core Expertise", href: "/core-expertise" }, { label: "About", href: "/about" }, { label: "Careers", href: "/careers" }, { label: "Contact", href: "/contact" }] },
+  { title: "Expertise", links: [{ label: "Civil Engineering", href: "/core-expertise/civil-engineering" }, { label: "Structural Engineering", href: "/core-expertise/structural-engineering" }, { label: "Foundation Engineering", href: "/core-expertise/foundation-engineering" }] },
+  { title: "Connect", links: [{ label: "Book a Call", href: "/book-a-call" }, { label: "Contact", href: "/contact" }, { label: "Email", href: "mailto:YOUR_EMAIL" }, { label: "LinkedIn", href: "#" }] },
+];
