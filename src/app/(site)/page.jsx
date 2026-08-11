@@ -24,7 +24,7 @@ function Hero() {
       {(p) => (
         <div className="flex h-full flex-col justify-between pt-[76px]">
           <Container className="flex flex-1 items-center ">
-            <div className="flex max-w-[1280px] m-48 flex-col gap-[var(--space-7)] p-[clamp(24px,3vw,44px)]">
+            <div className="flex max-w-[1280px] sm:m-48 flex-col gap-[var(--space-7)] p-[clamp(24px,3vw,44px)]">
               <Eyebrow tone="inverse">Engineering · Estimation · Design</Eyebrow>
               <h1 className="[font:var(--type-display-1)] !text-white">
                 Engineering Precision.<br />
@@ -56,7 +56,7 @@ function Hero() {
 
 function IntroStatement() {
   return (
-    <div className="relative py-[450px]  [background:var(--ink-950)] [background-image:var(--pattern-blueprint-dark)] [background-size:var(--grid-size-lg)_var(--grid-size-lg)]">
+    <div className="relative py-20 md:py-[450px]  [background:var(--ink-950)] [background-image:var(--pattern-blueprint-dark)] [background-size:var(--grid-size-lg)_var(--grid-size-lg)]">
       <Container>
         <div className="grid items-start gap-[var(--space-16)] [grid-template-columns:var(--split)]">
           <TextReveal tone="dark"  track={150} accentWords={["before", "execution"]} className="-py-[450px]">
@@ -120,7 +120,7 @@ function GlobalReach() {
           </div>
           <ScrollReveal from="right" >
              
-            <DottedWorldMap markers={TARGET_MARKETS} connections={MARKET_LINKS} tone="dark" height={660} scale={3.2} />
+            <DottedWorldMap markers={TARGET_MARKETS} connections={MARKET_LINKS} tone="dark" height="clamp(280px, 70vw, 660px)" scale={3.2} />
           </ScrollReveal>
         </div>
       </Container>

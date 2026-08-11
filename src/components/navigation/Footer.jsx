@@ -17,8 +17,8 @@ export function Footer({
       <div style={{ maxWidth: "1800px", margin: "0 auto", padding: "var(--space-24) var(--container-gutter) var(--space-10)", display: "grid", gridTemplateColumns: "var(--footer-cols)", gap: "var(--space-12)" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)", maxWidth: 340 }}>
           <span style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <img src={logoSrc} alt="" style={{ height: 70, filter: "brightness(0) invert(1)", margin: "-3px -20px " }} />
-            <span style={{ fontFamily: "var(--font-core)", fontWeight: 800, fontSize: "2.25rem", letterSpacing: "-0.03em" }}>{brand}</span>
+            <img src={logoSrc} alt="" style={{ height: "clamp(48px, 14vw, 70px)", filter: "brightness(0) invert(1)", margin: "-3px -20px " }} />
+            <span style={{ fontFamily: "var(--font-core)", fontWeight: 800, fontSize: "clamp(1.5rem, 7vw, 2.25rem)", letterSpacing: "-0.03em" }}>{brand}</span>
           </span>
           <p style={{ font: "var(--type-body-sm)", color: "var(--text-inverse-secondary)" }}>{blurb}</p>
           {/* <p style={{ font: "var(--type-mono)", fontSize: "var(--text-micro)", letterSpacing: "var(--tracking-label)", textTransform: "uppercase", color: "var(--orange-400)" }}>Engineering services only — no construction execution</p> */}
