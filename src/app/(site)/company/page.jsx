@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Button } from "@/components/core/Button.jsx";
 import { Eyebrow } from "@/components/core/Eyebrow.jsx";
 import { ScrollReveal } from "@/components/content/ScrollReveal.jsx";
@@ -104,7 +105,7 @@ export default function CompanyPage() {
           />
           <div style={{ display: "grid", gridTemplateColumns: "var(--cols-3)", gap: 1, background: "var(--neutral-300)", border: "1px solid var(--neutral-300)", marginTop: "var(--space-12)" }}>
             {expertise.map((discipline) => (
-              <a
+              <Link
                 key={discipline.slug}
                 href={`/core-expertise/${discipline.slug}`}
                 style={{ background: "var(--surface-page)", padding: "var(--space-8) var(--space-6)", display: "flex", flexDirection: "column", gap: "var(--space-3)", textDecoration: "none", color: "inherit" }}
@@ -112,7 +113,7 @@ export default function CompanyPage() {
                 <span style={{ color: "var(--text-accent)" }}><Icon name={discipline.icon} size={22} /></span>
                 <span style={{ font: "var(--type-h4)", fontSize: "var(--text-body-lg)" }}>{discipline.title}</span>
                 <span style={{ font: "var(--type-body-sm)", fontSize: "var(--text-caption)", color: "var(--text-secondary)" }}>{discipline.summary}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </Container>

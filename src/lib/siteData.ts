@@ -2,11 +2,8 @@ export const companyConfig = {
   name: "VectorValue",
   email: "contact@vectorvalue.com",
   phone: "+91 123 456 7890",
-  linkedin: "YOUR_LINKEDIN",
-  linkedinUrl: "#",
-  schedulingProvider: "calendly",
-  calendlyUrl: "YOUR_CALENDLY_URL",
-  calcomUrl: "YOUR_CALCOM_URL",
+  linkedin: "linkedin.com/company/vectorvalue",
+  linkedinUrl: "https://www.linkedin.com/company/vectorvalue",
   responseWindow: "48h",
 };
 
@@ -28,6 +25,7 @@ export const expertise = [
     slug: "civil-engineering",
     icon: "ruler",
     title: "Civil Engineering",
+    image: "/assets/imagery/site-crane-sunset.jpg",
     summary: "Precision-driven civil estimation and design support for buildings, sites and infrastructure packages.",
     intro: "Civil scope is where budgets are won or lost. We quantify it line by line — from stripping and bulk earthwork to concrete, reinforcement and finishes — so your team prices from measured quantities rather than allowances.",
     services: ["Quantity Estimation", "Cost Estimation", "BOQ Preparation", "Civil Works Estimation", "Earthwork Estimation", "Concrete Estimation", "Reinforcement Estimation", "Masonry Estimation", "Take-Off Services", "Material Quantification"],
@@ -42,6 +40,7 @@ export const expertise = [
     slug: "structural-engineering",
     icon: "frame",
     title: "Structural Engineering",
+    image: "/assets/imagery/bridge-aerial-forest.jpg",
     summary: "Analysis, design and detailing support for concrete and steel structures, delivered as reviewable calculation packages.",
     intro: "Structural decisions carry the largest downstream cost. We model, analyse and detail — then hand over calculations a reviewing engineer can follow line by line.",
     services: ["Structural Design", "Structural Analysis", "Structural Calculations", "Steel Structure Design", "Reinforced Concrete Design", "Structural Detailing", "Load Analysis", "Design Review", "Engineering Documentation"],
@@ -56,6 +55,7 @@ export const expertise = [
     slug: "foundation-engineering",
     icon: "layers",
     title: "Foundation Engineering",
+    image: "/assets/imagery/coastal-viaduct-wide.jpg",
     summary: "Shallow and deep foundation design, analysis and drawing packages — engineering only, never installation.",
     intro: "Foundations are designed once and paid for forever. We size and check them against the geotechnical information available, compare shallow and deep options, and document the reasoning behind the recommendation.",
     services: ["Foundation Design", "Shallow Foundation Design", "Deep Foundation Design", "Pile Foundation Design", "Foundation Analysis", "Foundation Load Calculations", "Foundation Drawings", "Foundation Design Review"],
@@ -121,29 +121,19 @@ export const insights = [
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "Core Expertise", href: "/core-expertise", mega: true },
-  { label: "About", href: "/about" },
+  { label: "About", href: "/company" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const megaGroups = [
-  {
-    title: "Civil Engineering",
-    href: "/core-expertise/civil-engineering",
-    icon: "ruler",
-    items: [
-      { label: "Estimation", href: "/core-expertise/civil-engineering#estimation" },
-      { label: "Civil Work", href: "/core-expertise/civil-engineering#civil-work" },
-      { label: "Design", href: "/core-expertise/civil-engineering#design" },
-      { label: "Foundation", href: "/core-expertise/civil-engineering#foundation" },
-    ],
-  },
+  { title: "Civil Engineering", href: "/core-expertise/civil-engineering", icon: "ruler", items: [] },
   { title: "Structural Engineering", href: "/core-expertise/structural-engineering", icon: "frame", items: [] },
   { title: "Foundation Engineering", href: "/core-expertise/foundation-engineering", icon: "layers", items: [] },
 ];
 
 export const footerLinks = [
-  { title: "Explore", links: [{ label: "Home", href: "/" }, { label: "Core Expertise", href: "/core-expertise" }, { label: "About", href: "/about" }, { label: "Careers", href: "/careers" }, { label: "Contact", href: "/contact" }] },
+  { title: "Explore", links: [{ label: "Home", href: "/" }, { label: "Core Expertise", href: "/core-expertise" }, { label: "About", href: "/company" }, { label: "Careers", href: "/careers" }, { label: "Contact", href: "/contact" }] },
   { title: "Expertise", links: [{ label: "Civil Engineering", href: "/core-expertise/civil-engineering" }, { label: "Structural Engineering", href: "/core-expertise/structural-engineering" }, { label: "Foundation Engineering", href: "/core-expertise/foundation-engineering" }] },
-  { title: "Connect", links: [{ label: "Book a Call", href: "/book-a-call" }, { label: "Contact", href: "/contact" }, { label: "Email", href: "mailto:YOUR_EMAIL" }, { label: "LinkedIn", href: "#" }] },
+  { title: "Connect", links: [{ label: "Book a Call", href: "/book-a-call" }, { label: "Contact", href: "/contact" }, { label: "Email", href: `mailto:${companyConfig.email}` }, { label: "LinkedIn", href: companyConfig.linkedinUrl }] },
 ];

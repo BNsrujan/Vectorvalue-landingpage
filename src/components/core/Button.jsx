@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Icon } from "./Icon.jsx";
 
 const SIZES = {
@@ -60,6 +61,8 @@ export function Button({
     onMouseEnter: () => setHover(true), onMouseLeave: () => setHover(false),
     onFocus: () => setHover(true), onBlur: () => setHover(false),
   };
-  if (href && !disabled) return <a href={href} style={composed} {...handlers} {...rest}>{inner}</a>;
+  const isInternal = href && !/^(https?:)?\/\//.test(href) && !href.startsWith("mailto:") && !href.startsWith("tel:");
+  if (href && !disabled && isInternal) return <Link href={href} onClick={onClick} style={composed} {...handlers} {...rest}>{inner}</Link>;
+  if (href && !disabled) return <a href={href} onClick={onClick} style={composed} {...handlers} {...rest}>{inner}</a>;
   return <button type={type} disabled={disabled} onClick={onClick} style={composed} {...handlers} {...rest}>{inner}</button>;
 }

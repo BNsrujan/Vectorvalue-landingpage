@@ -20,9 +20,11 @@
 
 /* --- Semantic: surfaces --- */
 --surface-page:var(--neutral-000);--surface-subtle:var(--neutral-100);--surface-sunken:var(--neutral-200);--surface-raised:var(--neutral-000);--surface-dark:var(--ink-800);--surface-dark-deep:var(--ink-950);--surface-slate:var(--slate-600);--surface-accent:var(--orange-600);--surface-accent-soft:var(--orange-050);--surface-overlay:rgba(15,18,25,.62);
+--background:var(--surface-page);
 
 /* --- Semantic: text --- */
 --text-primary:var(--ink-800);--text-secondary:var(--slate-600);--text-muted:var(--slate-400);--text-inverse:var(--neutral-000);--text-inverse-secondary:rgba(255,255,255,.72);--text-inverse-muted:rgba(255,255,255,.52);--text-accent:var(--orange-600);--text-on-accent:var(--neutral-000);--text-link:var(--orange-700);--text-link-hover:var(--orange-800);
+--foreground:var(--text-primary);
 
 /* --- Semantic: borders --- */
 --border-hairline:var(--neutral-250);--border-default:var(--neutral-300);--border-strong:var(--slate-300);--border-ink:var(--ink-800);--border-accent:var(--orange-600);--border-on-dark:rgba(255,255,255,.14);--border-on-dark-strong:rgba(255,255,255,.26);

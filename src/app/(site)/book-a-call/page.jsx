@@ -10,6 +10,7 @@ import { Checkbox } from "@/components/forms/Checkbox.jsx";
 import { Tag } from "@/components/core/Tag.jsx";
 import { Container, Section, Annotation, PageHero } from "@/components/site-components.tsx";
 import { companyConfig } from "@/lib/siteData";
+import { emailPattern } from "@/lib/validation";
 
 const callTypes = [
   { value: "technical", title: "Technical briefing", body: "Scope, drawings, discipline and deliverables." },
@@ -53,7 +54,7 @@ function BookingForm() {
     const form = new FormData(event.currentTarget);
     const name = String(form.get("name") || "").trim();
     const email = String(form.get("email") || "").trim();
-    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !selectedSlot) {
+    if (!name || !emailPattern.test(email) || !selectedSlot) {
       setError("Add your name, a valid work email and select an available time.");
       setStatus("error");
       return;

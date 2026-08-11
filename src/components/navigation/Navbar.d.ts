@@ -15,8 +15,6 @@ export interface NavbarProps {
   /** "overlay" starts transparent over a hero and turns solid past 24px of scroll. */
   variant?: "overlay" | "solid";
   megaGroups?: MegaGroup[];
-  /** Intercepts link clicks for client-side routing. */
-  onNavigate?: (href: string) => void;
   style?: React.CSSProperties;
 }
 export declare function Navbar(props: NavbarProps): JSX.Element;

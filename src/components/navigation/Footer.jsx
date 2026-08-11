@@ -1,16 +1,17 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Icon } from "../core/Icon.jsx";
 
 
 export function Footer({
   logoSrc = "assets/logo/vectorvalue-mark.png", brand = "VectorValue",
   blurb = "Engineering estimation, design and technical expertise for international project teams.",
-  columns = [], contact = {}, legal = [], onNavigate, style, ...rest
+  columns = [], contact = {}, legal = [], style, ...rest
 }) {
-  const go = (e, href) => { if (onNavigate && href && href.indexOf("http") !== 0 && href.indexOf("mailto") !== 0) { e.preventDefault(); onNavigate(href); } };
   const link = { display: "block", padding: "5px 0", textDecoration: "none", fontFamily: "var(--font-core)", fontSize: "var(--text-caption)", color: "var(--text-inverse-secondary)" };
+  const isInternal = (href) => href && !/^(https?:)?\/\//.test(href) && !href.startsWith("mailto:") && !href.startsWith("tel:");
   return (
     <footer style={{ background: "var(--ink-950)", backgroundImage: "var(--pattern-blueprint-dark)", backgroundSize: "var(--grid-size-lg) var(--grid-size-lg)", color: "var(--text-inverse)", ...style }} {...rest}>
       <div style={{ maxWidth: "1800px", margin: "0 auto", padding: "var(--space-24) var(--container-gutter) var(--space-10)", display: "grid", gridTemplateColumns: "var(--footer-cols)", gap: "var(--space-12)" }}>
@@ -26,12 +27,19 @@ export function Footer({
           <div key={col.title} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
             <span style={{ font: "var(--type-label)", letterSpacing: "var(--tracking-label)", textTransform: "uppercase", color: "var(--text-inverse-muted)" }}>{col.title}</span>
             <nav style={{ display: "flex", flexDirection: "column" }}>
-              {col.links.map((l) => (
-                <a key={l.label} href={l.href} onClick={(e) => go(e, l.href)} style={link}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--orange-400)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-inverse-secondary)"; }}
-                >{l.label}</a>
-              ))}
+              {col.links.map((l) =>
+                isInternal(l.href) ? (
+                  <Link key={l.label} href={l.href} style={link}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "var(--orange-400)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-inverse-secondary)"; }}
+                  >{l.label}</Link>
+                ) : (
+                  <a key={l.label} href={l.href} style={link}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "var(--orange-400)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-inverse-secondary)"; }}
+                  >{l.label}</a>
+                )
+              )}
             </nav>
           </div>
         ))}
@@ -52,9 +60,13 @@ export function Footer({
       <div style={{  margin: "0 auto", padding: "var(--space-6) var(--container-gutter) var(--space-10)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "var(--space-4)", borderTop: "1px solid var(--border-on-dark)" }}>
         <span style={{ font: "var(--type-mono)", fontSize: "var(--text-micro)", color: "var(--text-inverse-muted)" }}>© {new Date().getFullYear()} {brand}. All rights reserved.</span>
         <nav style={{ display: "flex", gap: "var(--space-6)" }}>
-          {legal.map((l) => (
-            <a key={l.label} href={l.href} onClick={(e) => go(e, l.href)} style={{ font: "var(--type-mono)", fontSize: "var(--text-micro)", color: "var(--text-inverse-muted)", textDecoration: "none" }}>{l.label}</a>
-          ))}
+          {legal.map((l) =>
+            isInternal(l.href) ? (
+              <Link key={l.label} href={l.href} style={{ font: "var(--type-mono)", fontSize: "var(--text-micro)", color: "var(--text-inverse-muted)", textDecoration: "none" }}>{l.label}</Link>
+            ) : (
+              <a key={l.label} href={l.href} style={{ font: "var(--type-mono)", fontSize: "var(--text-micro)", color: "var(--text-inverse-muted)", textDecoration: "none" }}>{l.label}</a>
+            )
+          )}
         </nav>
       </div>
     </footer>

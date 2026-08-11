@@ -7,7 +7,6 @@ export interface FooterProps {
   /** Placeholders until real details are supplied. */
   contact?: { email?: string; phone?: string; linkedin?: string; linkedinUrl?: string };
   legal?: { label: string; href: string }[];
-  onNavigate?: (href: string) => void;
   style?: React.CSSProperties;
 }
 export declare function Footer(props: FooterProps): JSX.Element;

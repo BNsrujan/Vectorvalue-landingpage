@@ -1,6 +1,4 @@
 /* VectorValue webfonts.
-   Core UI + display: Manrope (Google Fonts).
-   Technical / annotation: IBM Plex Mono (Google Fonts).
-   No licensed brand binaries were supplied — these load from the Google Fonts CDN.
-   Swap this @import for self-hosted @font-face rules if binaries are provided. */
-:root{--font-core:"Manrope","Helvetica Neue",Helvetica,Arial,sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+   Core UI + display: Manrope, self-hosted via next/font (see src/app/layout.tsx).
+   Technical / annotation: IBM Plex Mono, self-hosted via next/font. */
+:root{--font-core:var(--font-manrope),"Helvetica Neue",Helvetica,Arial,sans-serif;--font-mono:var(--font-ibm-plex-mono),ui-monospace,SFMono-Regular,Menlo,monospace}

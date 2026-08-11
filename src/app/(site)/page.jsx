@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Button } from "@/components/core/Button.jsx";
 import { Eyebrow } from "@/components/core/Eyebrow.jsx";
 import { ServiceCard } from "@/components/content/ServiceCard.jsx";
@@ -210,7 +211,7 @@ function Insights() {
         <div className="mt-[var(--space-12)] grid gap-[var(--space-8)] [grid-template-columns:var(--cols-3)]">
           {insights.map((insight, index) => (
             <ScrollReveal key={insight.title} delay={index * 70}>
-              <a href="/resources" className="flex flex-col gap-[var(--space-4)] text-inherit no-underline">
+              <Link href="/resources" className="flex flex-col gap-[var(--space-4)] text-inherit no-underline">
                 <div className="aspect-[16/10] overflow-hidden [background:var(--neutral-300)]">
                   <img src={insight.image} alt="" loading="lazy" className="h-full w-full object-cover [filter:grayscale(1)_contrast(1.04)]" />
                 </div>
@@ -220,7 +221,7 @@ function Insights() {
                 </div>
                 <h3 className="[font:var(--type-h4)] [font-size:var(--text-body-lg)]">{insight.title}</h3>
                 <p className="[font:var(--type-body-sm)] [font-size:var(--text-caption)] text-text-secondary">{insight.excerpt}</p>
-              </a>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

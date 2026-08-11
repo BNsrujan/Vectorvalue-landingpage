@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Icon } from "../core/Icon.jsx";
 
 /* Expertise-discipline card: icon, title, description, service list, arrow.
@@ -6,7 +7,7 @@ import { Icon } from "../core/Icon.jsx";
 export function ServiceCard({ icon = "layers", title, description, services = [], href = "#", meta, style, ...rest }) {
   const [hover, setHover] = React.useState(false);
   return (
-    <a
+    <Link
       href={href}
       onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       onFocus={() => setHover(true)} onBlur={() => setHover(false)}
@@ -42,6 +43,6 @@ export function ServiceCard({ icon = "layers", title, description, services = []
           <Icon name="arrow-right" size={15} strokeWidth={2} />
         </span>
       </span>
-    </a>
+    </Link>
   );
 }

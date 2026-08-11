@@ -11,28 +11,58 @@ import { Icon } from "@/components/core/Icon.jsx";
 import { Tag } from "@/components/core/Tag.jsx";
 import { Container, Section, Annotation, PageHero, CTABand, FAQBlock } from "@/components/site-components.tsx";
 import { companyConfig, faqs } from "@/lib/siteData.ts";
+import { contactFormSchema } from "@/lib/validation";
 
 function ContactForm() {
   const [status, setStatus] = React.useState("idle");
   const [errors, setErrors] = React.useState({});
+  const [errorMessage, setErrorMessage] = React.useState("Check the highlighted fields and try again.");
   const [values, setValues] = React.useState({ name: "", company: "", email: "", country: "", service: "" });
+  const [attachmentNames, setAttachmentNames] = React.useState([]);
   const setValue = (key) => (event) => setValues({ ...values, [key]: event.target.value });
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault();
-    const next = {};
-    if (!values.name.trim()) next.name = "Full name is required";
-    if (!values.company.trim()) next.company = "Company name is required";
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(values.email)) next.email = "Enter a valid work email";
-    if (!values.country.trim()) next.country = "Country is required";
-    if (!values.service) next.service = "Select the service you need";
-    setErrors(next);
-    if (Object.keys(next).length) {
+    const form = new FormData(event.currentTarget);
+    const payload = {
+      ...values,
+      phone: form.get("phone") || undefined,
+      projectType: form.get("projectType") || undefined,
+      stage: form.get("stage") || undefined,
+      message: form.get("message") || undefined,
+      consent: form.get("consent") === "on",
+      attachmentNames,
+    };
+
+    const result = contactFormSchema.safeParse(payload);
+    if (!result.success) {
+      const fieldErrors = result.error.flatten().fieldErrors;
+      setErrors(Object.fromEntries(Object.entries(fieldErrors).map(([key, messages]) => [key, messages?.[0]])));
+      setErrorMessage("Check the highlighted fields and try again.");
       setStatus("error");
       return;
     }
+
+    setErrors({});
     setStatus("submitting");
-    setTimeout(() => setStatus("success"), 900);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(result.data),
+      });
+      if (response.status === 503) {
+        setErrorMessage(`We couldn't send this automatically right now. Please email ${companyConfig.email} directly.`);
+        setStatus("error");
+        return;
+      }
+      const body = await response.json();
+      if (!response.ok) throw new Error(body.error || "The enquiry could not be sent");
+      setStatus("success");
+    } catch (requestError) {
+      setErrorMessage(requestError.message);
+      setStatus("error");
+    }
   };
 
   if (status === "success") {
@@ -43,7 +73,7 @@ function ContactForm() {
         <p style={{ font: "var(--type-body)", color: "var(--text-secondary)", maxWidth: "44ch" }}>
           An engineer will review the scope and respond within {companyConfig.responseWindow}. If drawings were attached, we will confirm what we can measure from them.
         </p>
-        <Button variant="outline" onClick={() => { setStatus("idle"); setValues({ name: "", company: "", email: "", country: "", service: "" }); }}>
+        <Button variant="outline" onClick={() => { setStatus("idle"); setValues({ name: "", company: "", email: "", country: "", service: "" }); setAttachmentNames([]); }}>
           Send another enquiry
         </Button>
       </div>
@@ -65,12 +95,12 @@ function ContactForm() {
       <Select label="Service Required" name="service" required options={["Civil Engineering", "Structural Engineering", "Foundation Engineering", "Quantity & Cost Estimation", "Infrastructure Engineering", "Technical Documentation", "Other"]} value={values.service} onChange={setValue("service")} error={errors.service} placeholder="Select a service" />
       <Select label="Estimated Project Stage" name="stage" options={["Feasibility", "Concept design", "Detailed design", "Tender / bid", "Pre-construction", "Ongoing project"]} placeholder="Select stage" />
       <Textarea style={{ gridColumn: "1 / -1" }} label="Message / Project Requirements" name="message" rows={5} placeholder="Scope, drawings available, measurement standard, target dates…" />
-      <FileUpload style={{ gridColumn: "1 / -1" }} accept=".pdf,.dwg,.dxf,.xlsx,.zip" />
+      <FileUpload style={{ gridColumn: "1 / -1" }} accept=".pdf,.dwg,.dxf,.xlsx,.zip" onFiles={(files) => setAttachmentNames(files.map((f) => f.name))} />
       <div style={{ gridColumn: "1 / -1", display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
         <Checkbox name="consent" required label="I agree that VectorValue may store this enquiry and contact me about it. Details are used only to respond to this request and are not shared with third parties." />
         {status === "error" ? (
           <p role="alert" style={{ display: "flex", alignItems: "center", gap: 8, font: "var(--type-body-sm)", color: "var(--status-error)" }}>
-            <Icon name="alert-circle" size={16} /> Check the highlighted fields and try again.
+            <Icon name="alert-circle" size={16} /> {errorMessage}
           </p>
         ) : null}
         <div style={{ display: "flex", alignItems: "center", gap: "var(--space-5)", flexWrap: "wrap" }}>

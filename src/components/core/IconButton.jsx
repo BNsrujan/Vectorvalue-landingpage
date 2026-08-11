@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Icon } from "./Icon.jsx";
 
 const TONES = {
@@ -22,6 +23,8 @@ export function IconButton({ icon, label, tone = "default", size = 44, href, onC
   };
   const handlers = { onMouseEnter: () => setHover(true), onMouseLeave: () => setHover(false) };
   const glyph = <Icon name={icon} size={Math.round(size * 0.42)} strokeWidth={1.75} />;
+  const isInternal = href && !/^(https?:)?\/\//.test(href) && !href.startsWith("mailto:") && !href.startsWith("tel:");
+  if (href && !disabled && isInternal) return <Link href={href} aria-label={label} style={composed} {...handlers} {...rest}>{glyph}</Link>;
   if (href && !disabled) return <a href={href} aria-label={label} style={composed} {...handlers} {...rest}>{glyph}</a>;
   return <button type="button" aria-label={label} disabled={disabled} onClick={onClick} style={composed} {...handlers} {...rest}>{glyph}</button>;
 }
