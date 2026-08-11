@@ -11,12 +11,13 @@ type SiteTone = "paper" | "subtle" | "ink" | "deep";
 type ContainerProps = {
   children: React.ReactNode;
   narrow?: boolean;
+  className?: string;
   style?: React.CSSProperties;
 };
 
-export function Container({ children, narrow = false, style }: ContainerProps) {
+export function Container({ children, narrow = false, className, style }: ContainerProps) {
   return (
-    <div style={{ maxWidth: narrow ? "var(--container-narrow)" : "var(--container-max)", margin: "0 auto", padding: "0 var(--container-gutter)", ...style }}>
+    <div className={className} style={{ maxWidth: narrow ? "var(--container-narrow)" : "var(--container-max)", margin: "0 auto", padding: "0 var(--container-gutter)", ...style }}>
       {children}
     </div>
   );
@@ -53,12 +54,13 @@ export function Section({ children, tone = "paper", grid = false, tight = false,
 type AnnotationProps = {
   children: React.ReactNode;
   tone?: "light" | "dark" | "accent";
+  className?: string;
   style?: React.CSSProperties;
 };
 
-export function Annotation({ children, tone = "light", style }: AnnotationProps) {
+export function Annotation({ children, tone = "light", className, style }: AnnotationProps) {
   return (
-    <span style={{ font: "var(--type-mono)", fontSize: "var(--text-micro)", letterSpacing: "var(--tracking-label)", textTransform: "uppercase", color: tone === "dark" ? "var(--text-inverse-muted)" : "var(--text-muted)", ...style }}>
+    <span className={className} style={{ font: "var(--type-mono)", fontSize: "var(--text-micro)", letterSpacing: "var(--tracking-label)", textTransform: "uppercase", color: tone === "dark" ? "var(--text-inverse-muted)" : "var(--text-muted)", ...style }}>
       {children}
     </span>
   );

@@ -25,11 +25,11 @@ function Hero() {
           <Container className="flex flex-1 items-center">
             <div className="flex max-w-[880px] flex-col gap-[var(--space-7)] p-[clamp(24px,3vw,44px)]">
               <Eyebrow tone="inverse">Engineering · Estimation · Design</Eyebrow>
-              <h1 className="[font:var(--type-display-1)] [letter-spacing:var(--tracking-display)] [color:var(--text-inverse)]">
+              <h1 className="[font:var(--type-display-1)]    !text-white">
                 Engineering Precision.<br />
-                <span className="[color:var(--orange-600)]">Measured</span> Value.
+                <span className="text-orange-600">Measured</span> Value.
               </h1>
-              <p className="max-w-[56ch] [font:var(--type-body-xl)] [line-height:var(--leading-relaxed)] [color:var(--text-inverse-secondary)]">
+              <p className="max-w-[56ch] [font:var(--type-body-xl)] [line-height:var(--leading-relaxed)] text-text-inverse-secondary">
                 VectorValue provides engineering estimation, design, technical analysis and documentation support for international projects — helping teams make informed decisions before construction begins.
               </p>
               <div className="mt-[var(--space-2)] flex flex-wrap gap-[var(--space-4)]">
@@ -62,7 +62,7 @@ function IntroStatement() {
             Engineering value is decided before execution — in the quantities, the calculations and the assumptions behind them.
           </TextReveal>
           <div className="sticky top-[34vh] flex flex-col gap-[var(--space-8)] pb-[var(--space-20)] md:py-[324px]">
-            <p className="reveal-text [font:var(--type-body-lg)] [color:var(--text-inverse-secondary)]">
+            <p className="reveal-text [font:var(--type-body-lg)] text-text-inverse-secondary">
               We work in the window where a project is still a decision: comparing options, measuring scope and documenting the reasoning — so the numbers your team commits to are the numbers the project can hold.
             </p>
             <div className="grid gap-[var(--space-8)] [grid-template-columns:var(--cols-2)]">
@@ -111,8 +111,8 @@ function GlobalReach() {
         <div className="grid items-center gap-[var(--space-12)] [grid-template-columns:var(--split-rev)]">
           <div className="flex flex-col gap-[var(--space-6)]">
             <Eyebrow index="05" tone="inverse">Global Reach</Eyebrow>
-            <h2 className="[font:var(--type-h1)] [letter-spacing:var(--tracking-heading)] [color:var(--text-inverse)]">Global engineering<br />without borders.</h2>
-            <p className="max-w-[44ch] [font:var(--type-body-lg)] [color:var(--text-inverse-secondary)]">
+            <h2 className="[font:var(--type-h1)] [letter-spacing:var(--tracking-heading)]  !text-white">Global engineering<br />without borders.</h2>
+            <p className="max-w-[44ch] [font:var(--type-body-lg)] text-text-inverse-secondary">
               Supporting international project teams with remote engineering expertise — structured around your drawing standards, measurement rules and working hours.
             </p>
             <Annotation tone="dark">Markers indicate target markets for remote engineering support — not offices or completed projects.</Annotation>
@@ -135,9 +135,9 @@ function WhyVectorValue() {
           {pillars.map((pillar, index) => (
             <ScrollReveal key={pillar.title} delay={index * 60}>
               <div className="flex flex-col gap-[var(--space-4)] border-t border-[var(--border-default)] pt-[var(--space-6)]">
-                <span className="[color:var(--text-accent)]"><Icon name={pillar.icon} size={22} /></span>
+                <span className="text-text-accent"><Icon name={pillar.icon} size={22} /></span>
                 <h3 className="[font:var(--type-h4)] [font-size:var(--text-body-lg)]">{pillar.title}</h3>
-                <p className="[font:var(--type-body-sm)] [color:var(--text-secondary)]">{pillar.body}</p>
+                <p className="[font:var(--type-body-sm)] text-text-secondary">{pillar.body}</p>
               </div>
             </ScrollReveal>
           ))}
@@ -151,7 +151,7 @@ function HowWeWork() {
   return (
     <Section tone="paper">
       <Container>
-        <SectionHeading index="07" eyebrow="How We Work" title="Understand → Analyze → Estimate → Review → Deliver"
+        <SectionHeading index="07" eyebrow="How We Work" title="Our Process"
           lead="A fixed sequence, applied to every engagement regardless of size." />
         <div className="mt-[var(--space-14)] grid gap-[var(--space-8)] [grid-template-columns:var(--cols-5)]">
           {process.map((step, index) => (
@@ -191,7 +191,7 @@ function WhoWeSupport() {
             <div key={client.title} className="flex flex-col gap-[var(--space-3)] px-[var(--space-6)] py-[var(--space-8)] [background:var(--surface-page)]">
               <Annotation>{String(index + 1).padStart(2, "0")}</Annotation>
               <h3 className="[font:var(--type-h4)] [font-size:var(--text-body)]">{client.title}</h3>
-              <p className="[font:var(--type-body-sm)] [font-size:var(--text-caption)] [color:var(--text-secondary)]">{client.body}</p>
+              <p className="[font:var(--type-body-sm)] [font-size:var(--text-caption)] text-text-secondary">{client.body}</p>
             </div>
           ))}
         </div>
@@ -214,11 +214,11 @@ function Insights() {
                   <img src={insight.image} alt="" loading="lazy" className="h-full w-full object-cover [filter:grayscale(1)_contrast(1.04)]" />
                 </div>
                 <div className="flex items-center gap-[var(--space-3)]">
-                  <Annotation className="[color:var(--text-accent)]">{insight.category}</Annotation>
+                  <Annotation className="text-text-accent">{insight.category}</Annotation>
                   <Annotation>· {insight.read}</Annotation>
                 </div>
                 <h3 className="[font:var(--type-h4)] [font-size:var(--text-body-lg)]">{insight.title}</h3>
-                <p className="[font:var(--type-body-sm)] [font-size:var(--text-caption)] [color:var(--text-secondary)]">{insight.excerpt}</p>
+                <p className="[font:var(--type-body-sm)] [font-size:var(--text-caption)] text-text-secondary">{insight.excerpt}</p>
               </a>
             </ScrollReveal>
           ))}

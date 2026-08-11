@@ -151,7 +151,7 @@ export function MarketingPage() {
 
       <section style={{ padding: "var(--section-y) 0", background: "var(--neutral-100)" }}>
         <div style={{ maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 var(--container-gutter)" }}>
-          <SectionHeading index="02" eyebrow="How We Work" title="Understand → Analyze → Estimate → Review → Deliver" />
+          <SectionHeading index="02" eyebrow="How We Work" title="Our Process" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5,minmax(0,1fr))", gap: 32, marginTop: 56 }}>
             {steps.map((step) => (
               <ProcessStep key={step.index} index={step.index} title={step.title} body={step.body} />
