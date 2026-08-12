@@ -67,8 +67,8 @@ function IntroStatement() {
               We work in the window where a project is still a decision: comparing options, measuring scope and documenting the reasoning — so the numbers your team commits to are the numbers the project can hold.
             </p>
             <div className="grid gap-[var(--space-8)] [grid-template-columns:var(--cols-2)]">
-              <StatBlock tone="dark" value={6} label="Engineering disciplines" />
-              <StatBlock tone="dark" value="Remote" label="Delivery model" />
+              <StatBlock tone="dark" value={3} label="Engineering disciplines" />
+              <StatBlock tone="dark" value="Remote" label="Support model" />
             </div>
             <Tag tone="inverse" mono>Estimation · Design · Documentation only</Tag>
           </div>
@@ -82,7 +82,7 @@ function ExpertiseGrid() {
   return (
     <Section tone="paper" id="expertise">
       <Container>
-        <SectionHeading index="04" eyebrow="Core Expertise" title="Six disciplines, one engineering standard."
+        <SectionHeading index="04" eyebrow="Core Expertise" title="Three disciplines, one engineering standard."
           lead="Estimation, design, analysis and documentation delivered remotely to international project teams — engineering work only, never construction execution."
           action={<Button variant="outline" withArrow href="/core-expertise">All expertise</Button>} />
         <div className="mt-[var(--space-12)] grid gap-px border border-[var(--neutral-300)] bg-[var(--neutral-300)] [grid-template-columns:var(--cols-3)]">
@@ -93,7 +93,7 @@ function ExpertiseGrid() {
                 title={item.title}
                 description={item.summary}
                 services={item.services}
-                meta={`${String(index + 1).padStart(2, "0")} / 06`}
+                meta={`${String(index + 1).padStart(2, "0")} / 03`}
                 href={`/core-expertise/${item.slug}`}
                 className="h-full"
               />
@@ -119,7 +119,7 @@ function GlobalReach() {
             <Annotation tone="dark">Markers indicate target markets for remote engineering support — not offices or completed projects.</Annotation>
           </div>
           <ScrollReveal from="right" >
-             
+
             <DottedWorldMap markers={TARGET_MARKETS} connections={MARKET_LINKS} tone="dark" height="clamp(280px, 70vw, 660px)" scale={3.2} />
           </ScrollReveal>
         </div>
@@ -169,7 +169,7 @@ function WhatWeDeliver() {
   return (
     <Section tone="ink" grid>
       <Container>
-        <SectionHeading index="08" eyebrow="What We Deliver" tone="dark" title="Deliverables your team can use on arrival." 
+        <SectionHeading index="08" eyebrow="What We Deliver" tone="dark" title="Deliverables your team can use on arrival."
           lead="Organised, referenced and issued with the assumptions that produced them." />
         <div className="mt-[var(--space-12)] grid gap-px border border-white/10 bg-white/10 [grid-template-columns:var(--cols-3)]">
           {deliverables.map((deliverable) => (
@@ -230,7 +230,7 @@ function Insights() {
   );
 }
 
-export default function Home() {
+export function HomeView() {
   return (
     <main>
       <Hero />

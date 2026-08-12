@@ -227,7 +227,7 @@ function BookingForm() {
         ) : null}
         <div className="mt-5 grid gap-[var(--space-6)] md:grid-cols-2">
           <Select label="Preferred time zone" name="timezone" options={["UTC−08 · Pacific", "UTC−05 · Eastern", "UTC · London", "UTC+04 · Gulf", "UTC+05:30 · India", "UTC+08 · Singapore"]} placeholder="Select time zone" />
-          <Select label="Project stage" name="stage" options={["Feasibility", "Concept design", "Detailed design", "Tender / bid", "Pre-construction", "Ongoing project"]} placeholder="Select stage" />
+          <Select label="Project stage" name="stage" options={["Feasibility", "Concept Design", "Detailed Design", "Tender / Bid", "Pre-Construction", "Ongoing Project"]} placeholder="Select stage" />
         </div>
       </div>
 
@@ -271,14 +271,14 @@ function PreparationPanel() {
           <li className="flex gap-3"><Icon name="layers" size={17} /> Project stage and target date</li>
           <li className="flex gap-3"><Icon name="ruler" size={17} /> Measurement or design standard</li>
         </ul>
-        <div className="mt-6 flex flex-wrap gap-2"><Tag tone="inverse" mono>Engineering only</Tag><Tag tone="inverse" mono>Remote delivery</Tag></div>
+        <div className="mt-6 flex flex-wrap gap-2"><Tag tone="inverse" mono>Engineering only</Tag><Tag tone="inverse" mono>Remote support</Tag></div>
       </div>
-      <p className="border-l-2 border-[var(--orange-600)] pl-5 [color:var(--text-secondary)] [font:var(--type-body-sm)]">VectorValue does not provide construction, installation, excavation or piling execution. We help you make the engineering decision before work begins.</p>
+      <p className="border-l-2 border-[var(--orange-600)] pl-5 [color:var(--text-secondary)] [font:var(--type-body-sm)]">VectorValue does not carry out construction, installation, excavation, piling or other ground engineering execution work. We help you make the engineering decision before work begins.</p>
     </aside>
   );
 }
 
-export default function BookACallPage() {
+export function BookACallView() {
   return (
     <main>
       <PageHero

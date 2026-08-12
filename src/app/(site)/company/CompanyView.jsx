@@ -19,7 +19,7 @@ const beliefs = [
   { title: "Scope honesty", body: "We decline work outside our discipline rather than stretch into it." },
 ];
 
-export default function CompanyPage() {
+export function CompanyView() {
   return (
     <main>
       <PageHero
@@ -85,7 +85,7 @@ export default function CompanyPage() {
               </div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "var(--cols-2)", gap: "var(--space-10)" }}>
-              <StatBlock tone="dark" value={6} label="Engineering disciplines" />
+              <StatBlock tone="dark" value={3} label="Engineering disciplines" />
               <StatBlock tone="dark" value={5} label="Workflow stages" />
               <StatBlock tone="dark" value={2} label="Engineers per deliverable" />
               <StatBlock tone="dark" value="48h" label="Typical first response" />
@@ -99,7 +99,7 @@ export default function CompanyPage() {
           <SectionHeading
             index="04"
             eyebrow="Our capabilities"
-            title="Six disciplines, delivered remotely."
+            title="Three disciplines, delivered remotely."
             lead="Each discipline has its own page, deliverable set and scope boundary."
             action={<Button variant="outline" withArrow href="/core-expertise">Core expertise</Button>}
           />

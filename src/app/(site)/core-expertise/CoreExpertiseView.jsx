@@ -6,7 +6,7 @@ import { ServiceCard } from "@/components/content/ServiceCard.jsx";
 import { Container, Section, PageHero, CTABand } from "@/components/site-components.tsx";
 import { expertise } from "@/lib/siteData.ts";
 
-export default function CoreExpertisePage() {
+export function CoreExpertiseView() {
   return (
     <main>
       <PageHero
@@ -15,7 +15,7 @@ export default function CoreExpertisePage() {
         lead="Estimation, design, analysis and documentation produced before construction begins — so international teams commit to numbers that hold."
         crumbs={[{ label: "Home", href: "/" }, { label: "Core Expertise" }]}
         image="/assets/imagery/towers-upward-monochrome.jpg"
-        meta={[{ label: "Disciplines", value: "03" }, { label: "Delivery", value: "Remote" }, { label: "Scope", value: "Engineering only" }]}
+        meta={[{ label: "Disciplines", value: "03" }, { label: "Support", value: "Remote" }, { label: "Scope", value: "Engineering only" }]}
       />
 
       <Section tone="paper">

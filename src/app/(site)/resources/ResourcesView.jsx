@@ -5,7 +5,7 @@ import { ScrollReveal } from "@/components/content/ScrollReveal.jsx";
 import { Container, Section, Annotation, PageHero, CTABand } from "@/components/site-components.tsx";
 import { insights } from "@/lib/siteData.ts";
 
-export default function ResourcesPage() {
+export function ResourcesView() {
   return (
     <main>
       <PageHero

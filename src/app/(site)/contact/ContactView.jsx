@@ -91,9 +91,9 @@ function ContactForm() {
       <Input label="Work Email" name="email" type="email" required value={values.email} onChange={setValue("email")} error={errors.email} placeholder="jane@company.com" />
       <Input label="Country" name="country" required value={values.country} onChange={setValue("country")} error={errors.country} placeholder="United Kingdom" />
       <Input label="Phone Number" name="phone" type="tel" hint="Include country code" />
-      <Select label="Project Type" name="projectType" options={["Commercial building", "Residential development", "Industrial facility", "Infrastructure / civils", "Site development", "Other"]} placeholder="Select project type" />
-      <Select label="Service Required" name="service" required options={["Civil Engineering", "Structural Engineering", "Foundation Engineering", "Quantity & Cost Estimation", "Infrastructure Engineering", "Technical Documentation", "Other"]} value={values.service} onChange={setValue("service")} error={errors.service} placeholder="Select a service" />
-      <Select label="Estimated Project Stage" name="stage" options={["Feasibility", "Concept design", "Detailed design", "Tender / bid", "Pre-construction", "Ongoing project"]} placeholder="Select stage" />
+      <Select label="Project Type" name="projectType" options={["Commercial Building", "Residential Development", "Industrial Facility", "Infrastructure / Civils", "Site Development", "Other"]} placeholder="Select project type" />
+      <Select label="Service Required" name="service" required options={["Civil Engineering", "Structural Engineering", "Ground Engineering", "Quantity & Cost Estimation", "Infrastructure Engineering", "Technical Documentation", "Other"]} value={values.service} onChange={setValue("service")} error={errors.service} placeholder="Select a service" />
+      <Select label="Estimated Project Stage" name="stage" options={["Feasibility", "Concept Design", "Detailed Design", "Tender / Bid", "Pre-Construction", "Ongoing Project"]} placeholder="Select stage" />
       <Textarea style={{ gridColumn: "1 / -1" }} label="Message / Project Requirements" name="message" rows={5} placeholder="Scope, drawings available, measurement standard, target dates…" />
       <FileUpload style={{ gridColumn: "1 / -1" }} accept=".pdf,.dwg,.dxf,.xlsx,.zip" onFiles={(files) => setAttachmentNames(files.map((f) => f.name))} />
       <div style={{ gridColumn: "1 / -1", display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
@@ -114,12 +114,12 @@ function ContactForm() {
   );
 }
 
-export default function ContactPage() {
+export function ContactView() {
   return (
     <main>
       <PageHero
         eyebrow="Contact"
-        title="Let's discuss your next engineering requirement."
+        title="Discuss your next engineering requirement with our team."
         lead="Estimation, quantity take-offs, foundation and structural design, technical documentation or project support — tell us what stage you are at."
         crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
         meta={[{ label: "Response", value: `Within ${companyConfig.responseWindow}` }, { label: "Working language", value: "English" }]}
@@ -149,7 +149,7 @@ export default function ContactPage() {
               <div style={{ padding: "var(--space-6)", background: "var(--ink-800)", color: "var(--text-inverse)", display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
                 <Annotation tone="dark">Scope note</Annotation>
                 <p style={{ font: "var(--type-body-sm)", color: "var(--text-inverse-secondary)" }}>
-                  VectorValue delivers engineering, estimation and documentation services. We do not tender for construction, installation or piling execution.
+                  VectorValue provides engineering, estimation and documentation services only. We do not carry out or tender for construction, installation, piling or other ground engineering execution work.
                 </p>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>

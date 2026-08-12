@@ -17,7 +17,7 @@ export function ExpertiseDisciplineView({ item }: { item: ExpertiseItem }) {
         lead={item.intro}
         crumbs={[{ label: "Home", href: "/" }, { label: "Core Expertise", href: "/core-expertise" }, { label: item.title, href: `/core-expertise/${item.slug}` }]}
         image={item.image}
-        meta={[{ label: "Services", value: String(item.services.length).padStart(2, "0") }, { label: "Delivery", value: "Remote" }, { label: "Scope", value: "Engineering only" }]}
+        meta={[{ label: "Services", value: String(item.services.length).padStart(2, "0") }, { label: "Support", value: "Remote" }, { label: "Scope", value: "Engineering only" }]}
         actions={<Button variant="primary" size="lg" withArrow href="/contact">Start an enquiry</Button>}
       />
 

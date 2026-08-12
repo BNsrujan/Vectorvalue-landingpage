@@ -4,12 +4,12 @@ import React from "react";
 import { Container, Section, PageHero, CTABand } from "@/components/site-components.tsx";
 import { companyConfig } from "@/lib/siteData.ts";
 
-export default function CareersPage() {
+export function CareersView() {
   return (
     <main>
       <PageHero
         eyebrow="Careers"
-        title="We're not actively hiring right now."
+        title="We are not actively hiring right now."
         lead="VectorValue stays deliberately small. When a role opens, it will be posted here first."
         crumbs={[{ label: "Home", href: "/" }, { label: "Careers" }]}
       />

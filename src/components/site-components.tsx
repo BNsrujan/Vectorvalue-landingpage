@@ -116,7 +116,7 @@ type CTABandProps = {
   body?: string;
 };
 
-export function CTABand({ tone = "ink", title = "Have an engineering requirement? Let's discuss it.", body = "Send drawings, a scope note or a question. You will speak with an engineer, not a sales desk." }: CTABandProps) {
+export function CTABand({ tone = "ink", title = "Have an engineering requirement? Get in touch.", body = "Send drawings, a scope note or a question. You will speak with an engineer, not a sales desk." }: CTABandProps) {
   const dark = tone === "ink";
   return (
     <Section tone={dark ? "ink" : "subtle"} grid={dark} tight>

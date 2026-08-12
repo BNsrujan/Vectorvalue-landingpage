@@ -6,7 +6,7 @@ export interface ServiceCardProps {
   /** Up to four sub-services are rendered; the rest are truncated. */
   services?: string[];
   href?: string;
-  /** Small mono label top-right, e.g. "01 / 06". */
+  /** Small mono label top-right, e.g. "01 / 03". */
   meta?: string;
   style?: React.CSSProperties;
 }

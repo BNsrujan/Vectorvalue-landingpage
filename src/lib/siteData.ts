@@ -52,9 +52,9 @@ export const expertise = [
     projectTypes: ["Framed buildings in concrete or steel", "Industrial structures and platforms", "Structural alterations and strengthening", "Temporary works design support", "Design-review and second-opinion work"],
   },
   {
-    slug: "foundation-engineering",
+    slug: "ground-engineering",
     icon: "layers",
-    title: "Foundation Engineering",
+    title: "Ground Engineering",
     image: "/assets/imagery/coastal-viaduct-wide.jpg",
     summary: "Shallow and deep foundation design, analysis and drawing packages — engineering only, never installation.",
     intro: "Foundations are designed once and paid for forever. We size and check them against the geotechnical information available, compare shallow and deep options, and document the reasoning behind the recommendation.",
@@ -86,9 +86,9 @@ export const deliverables = [
 ];
 
 export const faqs = [
-  { q: "Does VectorValue perform construction?", a: "No. VectorValue delivers engineering estimation, design, analysis, documentation and technical consultancy. We do not carry out construction, installation, contracting, excavation or piling works on site." },
+  { q: "Does VectorValue perform construction?", a: "No, VectorValue delivers engineering estimation, design, analysis, documentation and technical consultancy. We do not carry out construction, installation, contracting, excavation, piling or other ground engineering execution work." },
   { q: "What types of projects do you support?", a: "Buildings, industrial facilities, site development and civil infrastructure packages — at feasibility, tender or detailed design stage. The work is engineering and commercial documentation rather than site execution." },
-  { q: "Do you work with international clients?", a: "Yes. VectorValue is structured for remote engineering delivery to international project teams, working to the drawing standards, measurement rules and file formats your project already uses." },
+  { q: "Do you work with international clients?", a: "Yes, VectorValue is structured for remote engineering support to international project teams, working to the drawing standards, measurement rules and file formats your project already uses." },
   { q: "Can you work from our drawings?", a: "Yes — drawings, specifications, tender documents and geotechnical reports are the usual starting point. Where information is missing we list the assumptions we have made instead of leaving them implicit." },
 ];
 
@@ -113,7 +113,7 @@ export const clientTypes = [
 ];
 
 export const insights = [
-  { category: "Foundation Engineering", title: "Shallow or deep: how foundation selection is actually decided", excerpt: "Ground conditions, load intensity, settlement tolerance and programme — the four inputs that decide a foundation strategy before cost enters the conversation.", read: "8 min", image: "/assets/imagery/towers-upward-monochrome.jpg" },
+  { category: "Ground Engineering", title: "Shallow or deep: how foundation selection is actually decided", excerpt: "Ground conditions, load intensity, settlement tolerance and programme — the four inputs that decide a foundation strategy before cost enters the conversation.", read: "8 min", image: "/assets/imagery/towers-upward-monochrome.jpg" },
   { category: "Estimation", title: "What a defensible basis of estimate contains", excerpt: "The drawing register, measurement rules, inclusions and exclusions that turn a number into a document your commercial team can defend.", read: "6 min", image: "/assets/imagery/engineers-drawings-topdown.jpg" },
   { category: "Quantity Take-Off", title: "Where take-off errors compound on linear infrastructure", excerpt: "Chainage-based measurement, level data quality and the earthwork balance — three places small errors become large ones.", read: "7 min", image: "/assets/imagery/coastal-viaduct-aerial.jpg" },
 ];
@@ -139,12 +139,12 @@ export const megaGroups = [
     ],
   },
   { title: "Structural Engineering", href: "/core-expertise/structural-engineering", icon: "frame", items: [] },
-  { title: "Foundation Engineering", href: "/core-expertise/foundation-engineering", icon: "layers", items: [] },
+  { title: "Ground Engineering", href: "/core-expertise/ground-engineering", icon: "layers", items: [] },
 ];
 
 export const footerLinks = [
   // "Contact" entries hidden for now — Book a Call is the sole contact route
   { title: "Explore", links: [{ label: "Home", href: "/" }, { label: "Core Expertise", href: "/core-expertise" }, { label: "About", href: "/company" }, { label: "Careers", href: "/careers" }] },
-  { title: "Expertise", links: [{ label: "Civil Engineering", href: "/core-expertise/civil-engineering" }, { label: "Structural Engineering", href: "/core-expertise/structural-engineering" }, { label: "Foundation Engineering", href: "/core-expertise/foundation-engineering" }] },
+  { title: "Expertise", links: [{ label: "Civil Engineering", href: "/core-expertise/civil-engineering" }, { label: "Structural Engineering", href: "/core-expertise/structural-engineering" }, { label: "Ground Engineering", href: "/core-expertise/ground-engineering" }] },
   { title: "Connect", links: [{ label: "Book a Call", href: "/book-a-call" }, { label: "Email", href: `mailto:${companyConfig.email}` }, { label: "LinkedIn", href: companyConfig.linkedinUrl }] },
 ];

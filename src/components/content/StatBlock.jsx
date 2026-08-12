@@ -3,6 +3,8 @@ import React from "react";
 /* Metric block. Counts up once when scrolled into view (skipped under prefers-reduced-motion). */
 export function StatBlock({ value, suffix = "", prefix = "", label, tone = "light", animate = true, style, ...rest }) {
   const ref = React.useRef(null);
+  const reactId = React.useId();
+  const valueId = "stat-" + reactId.replace(/:/g, "");
   const numeric = typeof value === "number";
   const [shown, setShown] = React.useState(numeric && animate ? 0 : value);
   React.useEffect(() => {
@@ -26,11 +28,22 @@ export function StatBlock({ value, suffix = "", prefix = "", label, tone = "ligh
     return () => { io.disconnect(); cancelAnimationFrame(raf); };
   }, [value, numeric, animate]);
   const inverse = tone === "dark";
+  const valueStyle = { font: "var(--type-display-2)", fontSize: "clamp(2.25rem,3.4vw,3.25rem)", letterSpacing: "var(--tracking-display)", color: inverse ? "var(--text-inverse)" : "var(--text-primary)", fontVariantNumeric: "tabular-nums", lineHeight: 1 };
   return (
     <div ref={ref} style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)", ...style }} {...rest}>
-      <span style={{ font: "var(--type-display-2)", fontSize: "clamp(2.25rem,3.4vw,3.25rem)", letterSpacing: "var(--tracking-display)", color: inverse ? "var(--text-inverse)" : "var(--text-primary)", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>
+      <span id={valueId} style={valueStyle}>
         {prefix}{shown}<span style={{ color: "var(--text-accent)" }}>{suffix}</span>
       </span>
+      {numeric && animate ? (
+        // No-JS fallback: the animated span above is seeded at 0 and only reaches its
+        // final value via an effect, so browsers without JS would otherwise see "0" forever.
+        <noscript>
+          <style>{`#${valueId}{display:none}`}</style>
+          <span style={valueStyle}>
+            {prefix}{value}<span style={{ color: "var(--text-accent)" }}>{suffix}</span>
+          </span>
+        </noscript>
+      ) : null}
       <span style={{ font: "var(--type-label)", letterSpacing: "var(--tracking-label)", textTransform: "uppercase", color: inverse ? "var(--text-inverse-muted)" : "var(--text-muted)" }}>{label}</span>
     </div>
   );
